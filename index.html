@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AI Guardian — Safest Way to Get There</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/landingpage.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav" id="navbar">
+    <div class="nav__inner">
+      <a href="#" class="nav__logo">
+        <span class="logo-shield">&#10022;</span>
+        <span>AI <strong>Guardian</strong></span>
+      </a>
+      <ul class="nav__links">
+        <li><a href="#features">Features</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#safety">Safety</a></li>
+      </ul>
+      <div class="nav__cta">
+        <a href="/html/Signin.html" class="btn btn--ghost">Sign In</a>
+        <a href="/html/register.html" class="btn btn--primary">Get Started</a>
+      </div>
+      <button class="nav__hamburger" id="hamburger" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__badge">
+      <span class="badge-dot"></span>
+      Made for Women's Safety
+    </div>
+    <h1 class="hero__headline">
+      Fastest <span class="strike">≠</span> Safest.<br/>
+      <em>We choose safest.</em>
+    </h1>
+    <p class="hero__sub">
+      You choose where to go. AI Guardian finds the safest practical route<br class="hide-mobile"/>
+      — monitoring every step until you're home.
+    </p>
+    <div class="hero__actions">
+      <a href="#" class="btn btn--primary btn--lg">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><path d="M10 2a6 6 0 0 1 6 6c0 4-6 10-6 10S4 12 4 8a6 6 0 0 1 6-6z"/><circle cx="10" cy="8" r="2"/></svg>
+        Start Safe Journey
+      </a>
+      <a href="#" class="btn btn--outline btn--lg">
+        <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18"><circle cx="10" cy="10" r="8"/><polygon points="8,7 14,10 8,13" fill="currentColor" stroke="none"/></svg>
+        Interactive Demo
+      </a>
+    </div>
+    <div class="hero__stats">
+      <div class="stat">
+        <span class="stat__value">94%</span>
+        <span class="stat__label">Avg Route Safety Score</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat__value">&lt; 3s</span>
+        <span class="stat__label">Analysis Speed</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat">
+        <span class="stat__value">24 / 7</span>
+        <span class="stat__label">Guardian Assistance</span>
+      </div>
+    </div>
+    <div class="hero__bg-orb orb--1"></div>
+    <div class="hero__bg-orb orb--2"></div>
+  </section>
+
+  <!-- WHY SECTION -->
+  <section class="why" id="safety">
+    <div class="container">
+      <div class="section-label">Community-Powered Safety</div>
+      <h2 class="section-title">Why "Fastest" Is Not Always "Safest"</h2>
+      <p class="section-sub">Standard navigation apps optimise purely for speed, sending you down dark alleyways to save 3 minutes. AI Guardian calculates a multi-dimensional safety score to prioritise your well-being.</p>
+
+      <div class="route-compare">
+        <!-- Left: route list -->
+        <div class="route-list">
+          <div class="route-card route-card--fastest">
+            <div class="route-card__header">
+              <span class="route-label">Route A — Fastest</span>
+              <span class="badge badge--danger">Fastest</span>
+            </div>
+            <div class="route-card__time">26 min journey</div>
+            <span class="badge badge--warning">Risky at night</span>
+          </div>
+
+          <div class="route-card route-card--recommended active-route">
+            <div class="route-card__header">
+              <span class="route-label">Route B — AI Recommended</span>
+              <span class="badge badge--success">Recommended</span>
+            </div>
+            <div class="route-card__time">31 min journey</div>
+            <span class="badge badge--green">Safety Rating: 94%</span>
+            <p class="route-card__desc">Well-lit route along high-traffic commercial corridors, 24/7 street lighting, active guardian coverage.</p>
+          </div>
+
+          <div class="route-card route-card--balanced">
+            <div class="route-card__header">
+              <span class="route-label">Route C — Balanced</span>
+              <span class="badge badge--orange">Balanced</span>
+            </div>
+            <div class="route-card__time">34 min journey</div>
+            <span class="badge badge--warning">Risky at Night</span>
+          </div>
+        </div>
+
+        <!-- Right: detail panel -->
+        <div class="route-detail">
+          <div class="route-detail__header">
+            <span class="route-label route-label--pink">Route B — AI Recommended</span>
+            <span class="route-detail__tag">Safety Analysis</span>
+            <button class="info-btn" aria-label="Info">i</button>
+          </div>
+          <div class="route-map-graphic">
+            <svg viewBox="0 0 320 140" width="100%" preserveAspectRatio="none">
+              <defs>
+                <linearGradient id="routeGrad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#f43f5e"/>
+                  <stop offset="100%" stop-color="#22c55e"/>
+                </linearGradient>
+              </defs>
+              <path d="M10,120 Q80,20 160,60 Q240,100 310,20" stroke="url(#routeGrad)" stroke-width="3" fill="none" stroke-linecap="round"/>
+              <circle cx="310" cy="20" r="6" fill="#22c55e"/>
+              <circle cx="10" cy="120" r="6" fill="#f43f5e"/>
+            </svg>
+          </div>
+          <div class="route-detail__metrics">
+            <div class="metric">
+              <span class="metric__value">98%</span>
+              <span class="metric__label">Fully Lit (Annexed)</span>
+            </div>
+            <div class="metric">
+              <span class="metric__value">Active HD CCTV</span>
+              <span class="metric__label">Surveillance</span>
+            </div>
+            <div class="metric">
+              <span class="metric__value">4</span>
+              <span class="metric__label">Active Guardians</span>
+            </div>
+            <div class="metric">
+              <span class="metric__value">0</span>
+              <span class="metric__label">Reported Incidents</span>
+            </div>
+          </div>
+          <div class="route-detail__insight">
+            <span class="insight-icon">&#9650;</span>
+            <p><strong>AI Insight:</strong> This route passes 4 minutes of real-time camera placements, active radio patrol pathways, active CCTV for monitoring, and a nearby Guardian ensures complete peace of mind.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-label">Platform</div>
+      <h2 class="section-title">6 Core AI Guardian Capabilities</h2>
+      <p class="section-sub">Built from the ground up with cutting-edge AI and community-driven safety intelligence.</p>
+
+      <div class="features-grid">
+        <div class="feature-card" data-index="1">
+          <div class="feature-card__icon icon--red">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M12 2a7 7 0 0 1 7 7c0 5.25-7 13-7 13S5 14.25 5 9a7 7 0 0 1 7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          </div>
+          <div class="feature-card__tag">Live Stage</div>
+          <h3>1. AI Safe Route Selection</h3>
+          <p>Multi-factor algorithm evaluating lighting, street security, CCTV presence, community safety reports, guardian proximity and more.</p>
+        </div>
+
+        <div class="feature-card" data-index="2">
+          <div class="feature-card__icon icon--pink">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><circle cx="12" cy="12" r="9"/><polyline points="12,7 12,12 15,15"/></svg>
+          </div>
+          <div class="feature-card__tag">AI Fused</div>
+          <h3>2. Real-Time Journey Monitoring</h3>
+          <p>Continuous AI assistance to actively monitor your plans, unexpected stops, route deviations, and silent emergency triggers.</p>
+        </div>
+
+        <div class="feature-card" data-index="3">
+          <div class="feature-card__icon icon--rose">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><polygon points="3,11 12,2 21,11 21,22 15,22 15,16 9,16 9,22 3,22"/></svg>
+          </div>
+          <div class="feature-card__tag">Realtime</div>
+          <h3>3. Dynamic Safety Map</h3>
+          <p>Hyper-local intelligence showing real-time safety heatmaps, safe havens, rest-in-corridors, and community-verified secure locations.</p>
+        </div>
+
+        <div class="feature-card" data-index="4">
+          <div class="feature-card__icon icon--red">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M22 16.92v3a2 2 0 0 1-2.18 2c-3.5-.43-6.83-1.7-9.8-3.72A19.45 19.45 0 0 1 4.8 12.1C2.78 9.12 1.51 5.77 1.09 2.28A2 2 0 0 1 3.07.09h3a2 2 0 0 1 2 1.72c.13 1 .36 1.99.69 2.94a2 2 0 0 1-.45 2.11L7.09 7.91A16 16 0 0 0 13 13.84l1.06-1.06a2 2 0 0 1 2.11-.45c.95.33 1.94.56 2.94.69A2 2 0 0 1 21 15z"/></svg>
+          </div>
+          <div class="feature-card__tag">Instant Sync</div>
+          <h3>4. Emergency SOS</h3>
+          <p>One-tap emergency trigger dispatching live tracking, incident audio, and alerts to your safety network. Direct link to local departments.</p>
+        </div>
+
+        <div class="feature-card" data-index="5">
+          <div class="feature-card__icon icon--pink">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="feature-card__tag">Trusted Sync</div>
+          <h3>5. Safety Circle</h3>
+          <p>Keep loved ones informed with automated trip updates, real-time leg tracking, and verified arrival check-in notifications.</p>
+        </div>
+
+        <div class="feature-card" data-index="6">
+          <div class="feature-card__icon icon--rose">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="22" height="22"><path d="M12 22s-8-5-8-11a8 8 0 0 1 16 0c0 6-8 11-8 11z"/></svg>
+          </div>
+          <div class="feature-card__tag">Community</div>
+          <h3>6. Guardian Network</h3>
+          <p>Select network of community volunteers and verified safe-haven businesses ready to provide rapid assistance.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="how-it-works" id="how-it-works">
+    <div class="container">
+      <div class="section-label">Step by Step</div>
+      <h2 class="section-title">How AI Guardian Keeps You Safe</h2>
+      <p class="section-sub">Seamless protection from the moment you plan your trip until you step through your front door.</p>
+
+      <div class="steps-row">
+        <div class="step-card">
+          <div class="step-num">01</div>
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="28" height="28"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 12h8M12 8v8"/></svg>
+          </div>
+          <h4>Set Destination &amp; Safety Level</h4>
+          <p>Input your target destination and choose your safety preferences. Set delay timing or advanced options.</p>
+        </div>
+        <div class="step-arrow">→</div>
+
+        <div class="step-card">
+          <div class="step-num">02</div>
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="28" height="28"><circle cx="12" cy="12" r="3"/><path d="M12 2v2M12 20v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M2 12h2M20 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          </div>
+          <h4>AI Evaluates Safe Paths</h4>
+          <p>Thousands of live data points analysed to find safest routes.</p>
+        </div>
+        <div class="step-arrow">→</div>
+
+        <div class="step-card">
+          <div class="step-num">03</div>
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="28" height="28"><path d="M12 2a7 7 0 0 1 7 7c0 5.25-7 13-7 13S5 14.25 5 9a7 7 0 0 1 7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          </div>
+          <h4>Travel with Live AI Sentinel</h4>
+          <p>AI continuously monitors your location, deviations, and environment and sends updates.</p>
+        </div>
+        <div class="step-arrow">→</div>
+
+        <div class="step-card">
+          <div class="step-num">04</div>
+          <div class="step-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="28" height="28"><path d="M12 22s-8-5-8-11a8 8 0 0 1 16 0c0 6-8 11-8 11z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <h4>Arrive Safely or Auto-SOS</h4>
+          <p>Automatic arrival check-in. In case of no-response, emergency responders notified.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-card">
+        <div class="cta-card__orb"></div>
+        <div class="cta-card__content">
+          <div class="section-label section-label--light">Join the Movement</div>
+          <h2>Ready for a Safer Journey?</h2>
+          <p>Join thousands of women who trust AI Guardian every day to navigate safely with peace of mind.</p>
+          <div class="cta-card__actions">
+            <a href="#" class="btn btn--primary btn--lg">Create Free Account</a>
+            <a href="#" class="btn btn--outline-light btn--lg">Sign in to Dashboard</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__brand">
+        <span class="logo-shield">&#10022;</span>
+        <span>AI <strong>Guardian</strong></span>
+        <span class="footer__tagline">— Built for women's safety</span>
+      </div>
+      <nav class="footer__links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Safety Principles</a>
+        <a href="#">Emergency Contact</a>
+      </nav>
+      <p class="footer__copy">&copy; 2026 AI Guardian. All rights reserved. AI-driven safety intelligence for every journey.</p>
+    </div>
+  </footer>
+
+  <script src="js/landingpage.js"></script>
+</body>
+</html>
