@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Guardian — Safety Circle</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="/css/safety-circle.css">
+</head>
+
+<body>
+
+<div class="app-container">
+
+    <!-- ================= SIDEBAR ================= -->
+    <aside class="sidebar">
+
+        <!-- Logo -->
+        <div class="brand">
+            <div class="brand-icon">
+                <i data-lucide="shield"></i>
+            </div>
+
+            <div class="brand-text">
+                <h2>AI <span>GUARDIAN</span></h2>
+                <p>Women's Safety Navigation<br>Network</p>
+            </div>
+        </div>
+
+
+        <!-- Navigation -->
+        <div class="navigation-title">NAVIGATION</div>
+
+        <nav class="sidebar-nav">
+
+            <a href="#" class="nav-item">
+                <i data-lucide="grid-2x2"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <a href="#" class="nav-item">
+                <i data-lucide="navigation"></i>
+                <span>Safe Route</span>
+            </a>
+
+            <a href="#" class="nav-item">
+                <i data-lucide="map"></i>
+                <span>Safety Map</span>
+            </a>
+
+            <a href="#" class="nav-item">
+                <i data-lucide="radio"></i>
+                <span>Live Journey</span>
+            </a>
+
+            <!-- ACTIVE -->
+            <a href="#" class="nav-item active">
+                <i data-lucide="users"></i>
+                <span>Safety Circle</span>
+            </a>
+
+            <a href="#" class="nav-item">
+                <i data-lucide="network"></i>
+                <span>Guardian Network</span>
+            </a>
+
+            <a href="#" class="nav-item">
+                <i data-lucide="bell"></i>
+                <span>Notifications</span>
+            </a>
+
+            <a href="#" class="nav-item">
+                <i data-lucide="history"></i>
+                <span>Journey History</span>
+            </a>
+
+            <a href="#" class="nav-item">
+                <i data-lucide="settings"></i>
+                <span>Settings</span>
+            </a>
+
+            <a href="#" class="nav-item emergency">
+                <i data-lucide="shield-alert"></i>
+                <span>Emergency SOS</span>
+            </a>
+
+        </nav>
+
+
+        <!-- Account -->
+        <div class="account-box">
+
+            <div class="account-avatar">
+                PS
+            </div>
+
+            <div class="account-info">
+                <strong>Priya Sharma</strong>
+                <small>demo@guardian.ai</small>
+            </div>
+
+            <i data-lucide="log-out" class="logout-icon"></i>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+    <main class="main-content">
+
+        <!-- Top Header -->
+        <header class="top-header">
+
+            <div></div>
+
+            <div class="header-actions">
+
+                <button class="sos-button">
+                    <i data-lucide="shield-alert"></i>
+                    SOS
+                </button>
+
+                <button class="header-icon">
+                    <i data-lucide="bell"></i>
+                    <span class="notification-dot"></span>
+                </button>
+
+                <button class="header-icon">
+                    <i data-lucide="user-round"></i>
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- Page Content -->
+        <section class="page-content">
+
+            <!-- Page Heading -->
+            <div class="page-heading">
+
+                <div>
+
+                    <div class="eyebrow">
+                        <i data-lucide="heart"></i>
+                        TRUSTED CIRCLE SECURITY
+                    </div>
+
+                    <h1>Safety Circle</h1>
+
+                    <p>
+                        Configure emergency contacts who receive automatic SOS alerts,
+                        location broadcasts, and journey updates.
+                    </p>
+
+                </div>
+
+
+                <button class="add-contact-btn" id="openModal">
+
+                    <i data-lucide="user-plus"></i>
+
+                    Add Emergency Contact
+
+                </button>
+
+            </div>
+
+
+            <!-- Search / Filter -->
+            <div class="filter-panel">
+
+                <div class="search-container">
+
+                    <i data-lucide="search"></i>
+
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Search contacts by name or phone..."
+                    >
+
+                </div>
+
+
+                <div class="category-filter">
+
+                    <button class="filter-btn active" data-filter="all">
+                        All
+                    </button>
+
+                    <button class="filter-btn" data-filter="family">
+                        Family
+                    </button>
+
+                    <button class="filter-btn" data-filter="friend">
+                        Friend
+                    </button>
+
+                    <button class="filter-btn" data-filter="partner">
+                        Partner
+                    </button>
+
+                    <button class="filter-btn" data-filter="other">
+                        Other
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Contact Cards -->
+            <div class="contacts-grid" id="contactsGrid">
+
+
+                <!-- MOM -->
+                <div class="contact-card"
+                     data-category="family"
+                     data-name="Mom"
+                     data-phone="+91 98765 11111">
+
+                    <div class="card-top">
+
+                        <div class="person">
+
+                            <div class="person-avatar">
+                                MO
+                            </div>
+
+                            <div>
+                                <h3>Mom</h3>
+                                <span>Family</span>
+                            </div>
+
+                        </div>
+
+                        <span class="status">
+                            Active
+                        </span>
+
+                    </div>
+
+
+                    <div class="contact-details">
+
+                        <div>
+                            <i data-lucide="phone"></i>
+                            +91 98765 11111
+                        </div>
+
+                        <div>
+                            <i data-lucide="mail"></i>
+                            mom@email.com
+                        </div>
+
+                    </div>
+
+
+                    <div class="settings-row">
+
+                        <span>SOS & Warning Alerts</span>
+
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+
+                    </div>
+
+
+                    <div class="settings-row">
+
+                        <span>Live GPS Sharing</span>
+
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+
+                    </div>
+
+
+                    <div class="card-footer">
+
+                        <button class="test-alert">
+                            <i data-lucide="bell"></i>
+                            Test Alert
+                        </button>
+
+                        <div class="card-actions">
+
+                            <button class="edit-btn">
+                                <i data-lucide="pencil"></i>
+                            </button>
+
+                            <button class="delete-btn">
+                                <i data-lucide="trash-2"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- RIYA -->
+                <div class="contact-card"
+                     data-category="friend"
+                     data-name="Riya Patel"
+                     data-phone="+91 98765 22222">
+
+                    <div class="card-top">
+
+                        <div class="person">
+
+                            <div class="person-avatar">
+                                RP
+                            </div>
+
+                            <div>
+                                <h3>Riya Patel</h3>
+                                <span>Best Friend</span>
+                            </div>
+
+                        </div>
+
+                        <span class="status">
+                            Active
+                        </span>
+
+                    </div>
+
+
+                    <div class="contact-details">
+
+                        <div>
+                            <i data-lucide="phone"></i>
+                            +91 98765 22222
+                        </div>
+
+                        <div>
+                            <i data-lucide="mail"></i>
+                            riya@email.com
+                        </div>
+
+                    </div>
+
+
+                    <div class="settings-row">
+
+                        <span>SOS & Warning Alerts</span>
+
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+
+                    </div>
+
+
+                    <div class="settings-row">
+
+                        <span>Live GPS Sharing</span>
+
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+
+                    </div>
+
+
+                    <div class="card-footer">
+
+                        <button class="test-alert">
+                            <i data-lucide="bell"></i>
+                            Test Alert
+                        </button>
+
+                        <div class="card-actions">
+
+                            <button class="edit-btn">
+                                <i data-lucide="pencil"></i>
+                            </button>
+
+                            <button class="delete-btn">
+                                <i data-lucide="trash-2"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- DAD -->
+                <div class="contact-card"
+                     data-category="family"
+                     data-name="Dad"
+                     data-phone="+91 98765 33333">
+
+                    <div class="card-top">
+
+                        <div class="person">
+
+                            <div class="person-avatar">
+                                DA
+                            </div>
+
+                            <div>
+                                <h3>Dad</h3>
+                                <span>Family</span>
+                            </div>
+
+                        </div>
+
+                        <span class="status">
+                            Active
+                        </span>
+
+                    </div>
+
+
+                    <div class="contact-details">
+
+                        <div>
+                            <i data-lucide="phone"></i>
+                            +91 98765 33333
+                        </div>
+
+                        <div>
+                            <i data-lucide="mail"></i>
+                            dad@email.com
+                        </div>
+
+                    </div>
+
+
+                    <div class="settings-row">
+
+                        <span>SOS & Warning Alerts</span>
+
+                        <label class="switch">
+                            <input type="checkbox" checked>
+                            <span class="slider"></span>
+                        </label>
+
+                    </div>
+
+
+                    <div class="settings-row">
+
+                        <span>Live GPS Sharing</span>
+
+                        <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider"></span>
+                        </label>
+
+                    </div>
+
+
+                    <div class="card-footer">
+
+                        <button class="test-alert">
+                            <i data-lucide="bell"></i>
+                            Test Alert
+                        </button>
+
+                        <div class="card-actions">
+
+                            <button class="edit-btn">
+                                <i data-lucide="pencil"></i>
+                            </button>
+
+                            <button class="delete-btn">
+                                <i data-lucide="trash-2"></i>
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- ================= ADD CONTACT MODAL ================= -->
+
+<div class="modal-overlay" id="modal">
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <div>
+                <h2>Add Emergency Contact</h2>
+                <p>Add someone to your trusted safety circle.</p>
+            </div>
+
+            <button id="closeModal" class="close-modal">
+                <i data-lucide="x"></i>
+            </button>
+
+        </div>
+
+
+        <form id="contactForm">
+
+            <div class="form-group">
+
+                <label>Name</label>
+
+                <input
+                    type="text"
+                    id="contactName"
+                    placeholder="Enter contact name"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Phone</label>
+
+                <input
+                    type="text"
+                    id="contactPhone"
+                    placeholder="+91 XXXXX XXXXX"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Email</label>
+
+                <input
+                    type="email"
+                    id="contactEmail"
+                    placeholder="example@email.com"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>Relationship</label>
+
+                <select id="contactCategory">
+
+                    <option value="family">Family</option>
+                    <option value="friend">Friend</option>
+                    <option value="partner">Partner</option>
+                    <option value="other">Other</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="modal-buttons">
+
+                <button type="button" class="cancel-btn" id="cancelModal">
+                    Cancel
+                </button>
+
+                <button type="submit" class="save-btn">
+                    Add Contact
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<script src="/js/Safety Circle.js"></script>
+
+<script>
+    lucide.createIcons();
+</script>
+
+</body>
+</html>
