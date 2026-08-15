@@ -1,0 +1,1018 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>AI Guardian — Women's Safety Dashboard</title>
+
+    <meta
+        name="description"
+        content="AI Guardian is a women's personal safety and navigation platform."
+    >
+
+    <link rel="stylesheet" href="/css/Dashboard.css">
+
+    <!-- Icons -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    >
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="brand">
+            <div class="brand-logo">
+                <i class="fa-solid fa-shield-heart"></i>
+            </div>
+
+            <div>
+                <h2>AI <span>GUARDIAN</span></h2>
+                <p>Women's Safety</p>
+            </div>
+        </div>
+
+        <div class="sidebar-label">NAVIGATION</div>
+
+        <nav class="navigation">
+
+            <button class="nav-item active" data-section="dashboard">
+                <i class="fa-solid fa-grip-2"></i>
+                <span>Dashboard</span>
+            </button>
+
+            <button class="nav-item" data-section="route">
+                <i class="fa-solid fa-location-arrow"></i>
+                <span>Safe Route</span>
+            </button>
+
+            <button class="nav-item" data-section="map">
+                <i class="fa-regular fa-map"></i>
+                <span>Safety Map</span>
+            </button>
+
+            <button class="nav-item" data-section="live">
+                <i class="fa-solid fa-satellite-dish"></i>
+                <span>Live Journey</span>
+            </button>
+
+            <button class="nav-item" data-section="circle">
+                <i class="fa-solid fa-user-group"></i>
+                <span>Safety Circle</span>
+            </button>
+
+            <button class="nav-item" data-section="network">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span>Guardian Network</span>
+            </button>
+
+            <button class="nav-item" data-section="notifications">
+                <i class="fa-regular fa-bell"></i>
+                <span>Notifications</span>
+                <b class="notification-count">3</b>
+            </button>
+
+            <button class="nav-item" data-section="history">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <span>Journey History</span>
+            </button>
+
+            <button class="nav-item" data-section="settings">
+                <i class="fa-solid fa-gear"></i>
+                <span>Settings</span>
+            </button>
+
+        </nav>
+
+        <button class="emergency-sidebar" id="sidebarSOS">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <span>Emergency SOS</span>
+        </button>
+
+        <div class="sidebar-bottom">
+
+            <div class="profile-card">
+
+                <div class="avatar">AV</div>
+
+                <div class="profile-info">
+                    <strong id="profileName">Aanya Verma</strong>
+                    <small>aanya.verma@email.com</small>
+                </div>
+
+                <i class="fa-solid fa-chevron-right"></i>
+
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main">
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <button class="menu-button" id="menuButton">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="mobile-brand">
+                <div class="brand-logo small">
+                    <i class="fa-solid fa-shield-heart"></i>
+                </div>
+                <strong>AI <span>GUARDIAN</span></strong>
+            </div>
+
+            <div class="topbar-actions">
+
+                <button class="sos-button" id="topSOS">
+                    <i class="fa-solid fa-triangle-exclamation"></i>
+                    SOS
+                </button>
+
+                <button class="icon-button notification-button" id="notificationButton">
+                    <i class="fa-regular fa-bell"></i>
+                    <span></span>
+                </button>
+
+                <button class="profile-button">
+                    <div class="mini-avatar">AV</div>
+                    <span>Aanya Verma</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= DASHBOARD ================= -->
+
+        <section class="dashboard-content" id="dashboardSection">
+
+            <!-- HERO -->
+
+            <section class="hero">
+
+                <div class="hero-content">
+
+                    <div class="welcome-row">
+
+                        <h1>
+                            Welcome back,
+                            <span>Aanya Verma</span>
+                        </h1>
+
+                        <div class="safe-zone">
+                            <span></span>
+                            Safe Zone
+                        </div>
+
+                    </div>
+
+                    <p>
+                        All clear in your area. AI Guardian is continuously
+                        scanning live safety parameters.
+                    </p>
+
+                </div>
+
+                <div class="hero-actions">
+
+                    <button class="primary-button" id="startJourney">
+                        <i class="fa-solid fa-location-arrow"></i>
+                        Start Safe Journey
+                    </button>
+
+                    <button class="outline-danger-button" id="heroSOS">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        Quick SOS
+                    </button>
+
+                </div>
+
+                <div class="hero-decoration">
+                    <i class="fa-solid fa-shield-heart"></i>
+                </div>
+
+            </section>
+
+
+            <!-- ================= STAT CARDS ================= -->
+
+            <section class="stats-grid">
+
+                <article class="stat-card">
+
+                    <div>
+                        <p>Total Journeys</p>
+                        <h2 id="journeyCount">47</h2>
+
+                        <small class="positive">
+                            <i class="fa-solid fa-arrow-trend-up"></i>
+                            +4 this week
+                        </small>
+                    </div>
+
+                    <div class="stat-icon">
+                        <i class="fa-regular fa-compass"></i>
+                    </div>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <div>
+                        <p>Avg Safety Score</p>
+                        <h2 class="pink-text">
+                            100<span>/100</span>
+                        </h2>
+
+                        <small class="purple">
+                            <i class="fa-solid fa-sparkles"></i>
+                            Top 5% safest routes
+                        </small>
+                    </div>
+
+                    <div class="stat-icon">
+                        <i class="fa-solid fa-shield-halved"></i>
+                    </div>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <div>
+                        <p>Trusted Contacts</p>
+                        <h2>3</h2>
+
+                        <small class="positive">
+                            <i class="fa-regular fa-circle-check"></i>
+                            Active & Ready
+                        </small>
+                    </div>
+
+                    <div class="stat-icon">
+                        <i class="fa-solid fa-user-group"></i>
+                    </div>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <div>
+                        <p>Guardian Network</p>
+                        <h2>Opted-out</h2>
+
+                        <small class="muted">
+                            <i class="fa-solid fa-wave-square"></i>
+                            Click to enable
+                        </small>
+                    </div>
+
+                    <div class="stat-icon">
+                        <i class="fa-solid fa-tower-broadcast"></i>
+                    </div>
+
+                </article>
+
+
+                <article class="stat-card">
+
+                    <div>
+                        <p>Alerts This Week</p>
+                        <h2>0</h2>
+
+                        <small class="positive">
+                            <i class="fa-solid fa-arrow-trend-up"></i>
+                            All clear!
+                        </small>
+                    </div>
+
+                    <div class="stat-icon safe-icon">
+                        <i class="fa-solid fa-shield-check"></i>
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- ================= QUICK ACTIONS ================= -->
+
+            <section class="section">
+
+                <div class="section-heading">
+                    <h2>Quick Actions</h2>
+                </div>
+
+                <div class="actions-grid">
+
+                    <article class="action-card" data-action="route">
+
+                        <div class="action-icon">
+                            <i class="fa-solid fa-location-arrow"></i>
+                        </div>
+
+                        <h3>Start Safe Journey</h3>
+
+                        <p>
+                            AI-optimized routing with real-time
+                            lighting & crowd signals.
+                        </p>
+
+                        <button class="card-link">
+                            Plan Route
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+
+                    </article>
+
+
+                    <article class="action-card danger-card" data-action="sos">
+
+                        <div class="action-icon danger">
+                            <i class="fa-solid fa-triangle-exclamation"></i>
+                        </div>
+
+                        <h3>Quick SOS</h3>
+
+                        <p>
+                            Instant emergency dispatch & alert
+                            broadcast to trusted contacts.
+                        </p>
+
+                        <button class="card-link danger-link">
+                            Trigger SOS
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+
+                    </article>
+
+
+                    <article class="action-card" data-action="circle">
+
+                        <div class="action-icon purple-icon">
+                            <i class="fa-solid fa-user-group"></i>
+                        </div>
+
+                        <h3>Safety Circle</h3>
+
+                        <p>
+                            Manage 3 trusted contacts & live
+                            location sharing rules.
+                        </p>
+
+                        <button class="card-link">
+                            Manage Circle
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+
+                    </article>
+
+
+                    <article class="action-card" data-action="map">
+
+                        <div class="action-icon blue-icon">
+                            <i class="fa-regular fa-map"></i>
+                        </div>
+
+                        <h3>Safety Map</h3>
+
+                        <p>
+                            Interactive heatmap of streetlights,
+                            crowd activity & safe zones.
+                        </p>
+
+                        <button class="card-link blue-link">
+                            Explore Map
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+
+                    </article>
+
+                </div>
+
+            </section>
+
+
+            <!-- ================= LOWER GRID ================= -->
+
+            <section class="lower-grid">
+
+
+                <!-- RECENT JOURNEYS -->
+
+                <article class="panel">
+
+                    <div class="panel-header">
+
+                        <div class="panel-title">
+                            <i class="fa-regular fa-clock"></i>
+                            <h2>Recent Journeys</h2>
+                        </div>
+
+                        <button class="view-all" data-section="history">
+                            View All
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+
+                    </div>
+
+
+                    <div class="journey-list">
+
+                        <div class="journey-item">
+
+                            <div class="journey-info">
+
+                                <div class="journey-route">
+                                    <strong>Home</strong>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                    <strong>Office</strong>
+                                </div>
+
+                                <small>
+                                    2026-08-14
+                                    <span>•</span>
+                                    08:45 AM
+                                    <span>•</span>
+                                    24 min
+                                </small>
+
+                            </div>
+
+                            <span class="score green-score">
+                                Score: 94/100
+                            </span>
+
+                        </div>
+
+
+                        <div class="journey-item">
+
+                            <div class="journey-info">
+
+                                <div class="journey-route">
+                                    <strong>Office</strong>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                    <strong>City Mall</strong>
+                                </div>
+
+                                <small>
+                                    2026-08-13
+                                    <span>•</span>
+                                    06:30 PM
+                                    <span>•</span>
+                                    18 min
+                                </small>
+
+                            </div>
+
+                            <span class="score orange-score">
+                                Score: 76/100
+                            </span>
+
+                        </div>
+
+
+                        <div class="journey-item">
+
+                            <div class="journey-info">
+
+                                <div class="journey-route">
+                                    <strong>University</strong>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                    <strong>Home</strong>
+                                </div>
+
+                                <small>
+                                    2026-08-12
+                                    <span>•</span>
+                                    09:15 PM
+                                    <span>•</span>
+                                    31 min
+                                </small>
+
+                            </div>
+
+                            <div class="journey-tags">
+
+                                <span class="score green-score">
+                                    Score: 91/100
+                                </span>
+
+                                <span class="rerouted">
+                                    AI Rerouted
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+                <!-- ALERTS -->
+
+                <article class="panel">
+
+                    <div class="panel-header">
+
+                        <div class="panel-title">
+                            <i class="fa-regular fa-bell"></i>
+                            <h2>Safety Alerts Feed</h2>
+                        </div>
+
+                        <button class="view-all" data-section="notifications">
+                            View All
+                            <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+
+                    </div>
+
+
+                    <div class="alert-list">
+
+                        <div class="alert-item">
+
+                            <div class="alert-icon">
+                                <i class="fa-solid fa-shield"></i>
+                            </div>
+
+                            <div>
+                                <strong>Welcome to AI Guardian</strong>
+                                <p>
+                                    Your safety is our priority.
+                                    Start your first safe journey today!
+                                </p>
+                                <small>04:17 pm</small>
+                            </div>
+
+                            <span class="new-dot"></span>
+
+                        </div>
+
+
+                        <div class="alert-item">
+
+                            <div class="alert-icon green-alert">
+                                <i class="fa-solid fa-check"></i>
+                            </div>
+
+                            <div>
+                                <strong>Safety Circle Active</strong>
+                                <p>
+                                    You have 3 trusted contacts configured.
+                                    They will be notified in emergencies.
+                                </p>
+                                <small>03:17 pm</small>
+                            </div>
+
+                            <span class="new-dot"></span>
+
+                        </div>
+
+
+                        <div class="alert-item warning-alert">
+
+                            <div class="alert-icon warning">
+                                <i class="fa-solid fa-triangle-exclamation"></i>
+                            </div>
+
+                            <div>
+                                <strong>Safety Alert: Downtown Area</strong>
+                                <p>
+                                    Increased safety reports near Market
+                                    Street between 10 PM - 2 AM.
+                                    Consider alternative routes.
+                                </p>
+                                <small>05:17 pm</small>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+            </section>
+
+
+            <!-- ================= SYSTEM STATUS ================= -->
+
+            <section class="system-status">
+
+                <div class="status-heading">
+
+                    <div class="status-title">
+                        <i class="fa-solid fa-shield-halved"></i>
+                        <strong>System Vigilance & Safety Status</strong>
+                    </div>
+
+                    <span class="status-badge">
+                        <span></span>
+                        SAFE
+                    </span>
+
+                </div>
+
+
+                <div class="status-content">
+
+                    <div class="status-metrics">
+
+                        <div>
+                            <span>Environmental Risk</span>
+                            <strong>Low Risk</strong>
+                        </div>
+
+                        <div>
+                            <span>AI Companion</span>
+                            <strong>Active Watch</strong>
+                        </div>
+
+                        <div>
+                            <span>Location Broadcast</span>
+                            <strong>Encrypted</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="status-control">
+
+                        <span>Simulate Status Override:</span>
+
+                        <div class="status-buttons">
+
+                            <button class="status-btn active" data-status="safe">
+                                Safe
+                            </button>
+
+                            <button class="status-btn" data-status="monitoring">
+                                Monitoring
+                            </button>
+
+                            <button class="status-btn" data-status="alert">
+                                Alert
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <div class="status-shield">
+                        <i class="fa-solid fa-shield-heart"></i>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </section>
+
+
+        <!-- ================= OTHER SECTIONS ================= -->
+
+        <section class="page-section hidden" id="routeSection">
+            <div class="page-card">
+                <span class="page-icon"><i class="fa-solid fa-location-arrow"></i></span>
+                <h1>AI Safe Route Planning</h1>
+                <p>Plan a safer journey using AI-powered route analysis, lighting signals, crowd activity and safety scores.</p>
+
+                <div class="route-form">
+
+                    <div class="input-group">
+                        <label>Starting Location</label>
+                        <input id="startLocation" type="text" placeholder="Enter your starting point">
+                    </div>
+
+                    <div class="input-group">
+                        <label>Destination</label>
+                        <input id="destination" type="text" placeholder="Where are you headed?">
+                    </div>
+
+                </div>
+
+                <div class="preset-row">
+                    <button>Office</button>
+                    <button>University</button>
+                    <button>City Mall</button>
+                    <button>Metro Station</button>
+                    <button>Hospital</button>
+                    <button>Park</button>
+                </div>
+
+                <button class="primary-button route-calculate" id="calculateRoute">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    Calculate Safe Routes
+                </button>
+
+                <div id="routeResult"></div>
+
+            </div>
+        </section>
+
+
+        <section class="page-section hidden" id="mapSection">
+            <div class="page-card map-page">
+                <span class="page-icon"><i class="fa-regular fa-map"></i></span>
+                <h1>Safety Map</h1>
+                <p>Explore nearby safe zones, lighting coverage, crowd activity and reported safety areas.</p>
+
+                <div class="fake-map">
+                    <div class="map-grid"></div>
+
+                    <div class="map-pin pin-one">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+
+                    <div class="map-pin pin-two">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+
+                    <div class="safe-zone-map">
+                        <i class="fa-solid fa-shield"></i>
+                        Safe Zone
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <section class="page-section hidden" id="liveSection">
+            <div class="page-card">
+                <span class="page-icon"><i class="fa-solid fa-satellite-dish"></i></span>
+                <h1>Live Journey</h1>
+                <p>Your AI Guardian companion can monitor your active journey and safety parameters.</p>
+
+                <div class="live-status">
+                    <span class="live-dot"></span>
+                    No active journey
+                </div>
+
+                <button class="primary-button" id="liveStart">
+                    Start Live Journey
+                </button>
+            </div>
+        </section>
+
+
+        <section class="page-section hidden" id="circleSection">
+            <div class="page-card">
+                <span class="page-icon"><i class="fa-solid fa-user-group"></i></span>
+                <h1>Safety Circle</h1>
+                <p>Manage your trusted contacts who can receive emergency notifications.</p>
+
+                <div class="contacts">
+
+                    <div class="contact">
+                        <div class="contact-avatar">RK</div>
+                        <div>
+                            <strong>Rahul Kumar</strong>
+                            <small>Primary Contact</small>
+                        </div>
+                        <span class="contact-active">Active</span>
+                    </div>
+
+                    <div class="contact">
+                        <div class="contact-avatar">SM</div>
+                        <div>
+                            <strong>Shreya Mehta</strong>
+                            <small>Family Contact</small>
+                        </div>
+                        <span class="contact-active">Active</span>
+                    </div>
+
+                    <div class="contact">
+                        <div class="contact-avatar">AP</div>
+                        <div>
+                            <strong>Ananya Patel</strong>
+                            <small>Friend</small>
+                        </div>
+                        <span class="contact-active">Active</span>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <section class="page-section hidden" id="networkSection">
+            <div class="page-card">
+                <span class="page-icon"><i class="fa-solid fa-shield-halved"></i></span>
+                <h1>Guardian Network</h1>
+                <p>Connect with the wider safety network and anonymously contribute safety signals.</p>
+
+                <div class="network-toggle">
+                    <div>
+                        <strong>Guardian Network</strong>
+                        <p>Share anonymous safety signals with the network.</p>
+                    </div>
+
+                    <label class="switch">
+                        <input type="checkbox" id="networkToggle">
+                        <span></span>
+                    </label>
+                </div>
+            </div>
+        </section>
+
+
+        <section class="page-section hidden" id="notificationsSection">
+            <div class="page-card">
+                <span class="page-icon"><i class="fa-regular fa-bell"></i></span>
+                <h1>Safety Notifications</h1>
+                <p>Review important updates related to your safety and journeys.</p>
+
+                <div class="notification-page-list">
+
+                    <div class="notification-page-item">
+                        <i class="fa-solid fa-shield"></i>
+                        <div>
+                            <strong>System is safe</strong>
+                            <p>AI Guardian is actively monitoring your environment.</p>
+                        </div>
+                    </div>
+
+                    <div class="notification-page-item">
+                        <i class="fa-solid fa-user-group"></i>
+                        <div>
+                            <strong>Safety Circle Active</strong>
+                            <p>3 trusted contacts are ready for emergency alerts.</p>
+                        </div>
+                    </div>
+
+                    <div class="notification-page-item warning">
+                        <i class="fa-solid fa-triangle-exclamation"></i>
+                        <div>
+                            <strong>Downtown Area Alert</strong>
+                            <p>Consider an alternative route late at night.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <section class="page-section hidden" id="historySection">
+            <div class="page-card">
+                <span class="page-icon"><i class="fa-solid fa-clock-rotate-left"></i></span>
+                <h1>Journey History</h1>
+                <p>Your previous journeys and their AI safety scores.</p>
+
+                <div class="history-table">
+
+                    <div class="history-row header">
+                        <span>Route</span>
+                        <span>Date</span>
+                        <span>Duration</span>
+                        <span>Score</span>
+                    </div>
+
+                    <div class="history-row">
+                        <span>Home → Office</span>
+                        <span>14 Aug 2026</span>
+                        <span>24 min</span>
+                        <strong>94/100</strong>
+                    </div>
+
+                    <div class="history-row">
+                        <span>Office → City Mall</span>
+                        <span>13 Aug 2026</span>
+                        <span>18 min</span>
+                        <strong>76/100</strong>
+                    </div>
+
+                    <div class="history-row">
+                        <span>University → Home</span>
+                        <span>12 Aug 2026</span>
+                        <span>31 min</span>
+                        <strong>91/100</strong>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <section class="page-section hidden" id="settingsSection">
+            <div class="page-card">
+                <span class="page-icon"><i class="fa-solid fa-gear"></i></span>
+                <h1>Settings</h1>
+                <p>Manage your AI Guardian safety preferences.</p>
+
+                <div class="settings-list">
+
+                    <label class="setting-row">
+                        <div>
+                            <strong>Location Monitoring</strong>
+                            <small>Allow AI Guardian to monitor your journey.</small>
+                        </div>
+                        <input type="checkbox" checked>
+                    </label>
+
+                    <label class="setting-row">
+                        <div>
+                            <strong>Emergency Alerts</strong>
+                            <small>Notify trusted contacts during emergencies.</small>
+                        </div>
+                        <input type="checkbox" checked>
+                    </label>
+
+                    <label class="setting-row">
+                        <div>
+                            <strong>AI Route Recommendations</strong>
+                            <small>Automatically suggest safer routes.</small>
+                        </div>
+                        <input type="checkbox" checked>
+                    </label>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- ================= SOS MODAL ================= -->
+
+<div class="modal-overlay" id="sosModal">
+
+    <div class="sos-modal">
+
+        <button class="modal-close" id="closeSOS">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+
+        <div class="sos-large-icon">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+        </div>
+
+        <h2>Emergency SOS</h2>
+
+        <p>
+            This will alert your trusted contacts and share your
+            current location with them.
+        </p>
+
+        <div class="sos-actions">
+
+            <button class="cancel-button" id="cancelSOS">
+                Cancel
+            </button>
+
+            <button class="confirm-sos" id="confirmSOS">
+                <i class="fa-solid fa-phone"></i>
+                Send SOS
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- ================= TOAST ================= -->
+
+<div class="toast" id="toast">
+
+    <div class="toast-icon">
+        <i class="fa-solid fa-check"></i>
+    </div>
+
+    <div>
+        <strong id="toastTitle">Success</strong>
+        <p id="toastMessage">Action completed.</p>
+    </div>
+
+</div>
+
+
+<script src="/js/Dashboard.js"></script>
+
+</body>
+</html>
