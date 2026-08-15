@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Guardian — Live Journey | Women's Safety Monitoring</title>
+<meta name="description" content="AI Guardian Live Journey — a real-time AI-powered safety monitoring page built exclusively for women's safety.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="livejourney.css">
+</head>
+<body>
+
+<div class="app-shell">
+
+  <!-- ===================== PERMANENT SIDEBAR ===================== -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-header">
+      <div class="brand">
+        <div class="brand-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-name">AI <span class="accent">GUARDIAN</span></span>
+          <span class="brand-tag">Women's Safety Companion</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-section-label">Navigation</div>
+
+    <nav class="nav-list">
+      <a href="#" class="nav-item" data-name="Dashboard">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>
+        <span class="nav-label">Dashboard</span>
+      </a>
+      <a href="#" class="nav-item" data-name="Safe Route">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="4" y1="19" x2="10" y2="19"/><path d="M4 19c0-8 6-8 6-14"/><circle cx="18" cy="6" r="2"/></svg>
+        <span class="nav-label">Safe Route</span>
+      </a>
+      <a href="#" class="nav-item" data-name="Safety Map">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+        <span class="nav-label">Safety Map</span>
+      </a>
+      <a href="#" class="nav-item active" data-name="Live Journey">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg>
+        <span class="nav-label">Live Journey</span>
+      </a>
+      <a href="#" class="nav-item" data-name="Safety Circle">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <span class="nav-label">Safety Circle</span>
+      </a>
+      <a href="#" class="nav-item" data-name="Guardian Network">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><line x1="12" y1="7" x2="5" y2="17"/><line x1="12" y1="7" x2="19" y2="17"/></svg>
+        <span class="nav-label">Guardian Network</span>
+      </a>
+      <a href="#" class="nav-item" data-name="Notifications">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        <span class="nav-label">Notifications</span>
+      </a>
+      <a href="#" class="nav-item" data-name="Journey History">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15.5 14"/></svg>
+        <span class="nav-label">Journey History</span>
+      </a>
+      <a href="#" class="nav-item" data-name="Settings">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.6 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.6a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9c.14.31.35.6.62.82.27.23.6.38.94.44H21a2 2 0 0 1 0 4h-.09c-.34.06-.67.21-.94.44-.27.22-.48.51-.62.82Z"/></svg>
+        <span class="nav-label">Settings</span>
+      </a>
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="#" class="nav-item sos-nav" id="sosNavBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
+        <span class="nav-label">Emergency SOS</span>
+      </a>
+
+      <div class="user-card">
+        <div class="user-avatar">PS</div>
+        <div class="user-info">
+          <span class="user-name">Priya Sharma</span>
+          <span class="user-email">demo@guardian.ai</span>
+        </div>
+        <svg class="user-logout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ===================== MAIN CONTENT ===================== -->
+  <div class="main-content">
+    <main class="page">
+
+      <div class="women-safety-strip">
+        🛡️ This page is part of <strong>AI Guardian's Women's Safety Suite</strong> — designed to protect and empower women during every journey.
+      </div>
+
+      <div class="page-head">
+        <div class="status-live"><span class="pulse-dot"></span> LIVE MONITORING SYSTEM ACTIVE</div>
+        <div class="page-head-row">
+          <div>
+            <h1>Live Journey Monitor</h1>
+            <p>Real-time AI guardian tracking your location, environmental safety, and anomaly status.</p>
+          </div>
+          <div class="page-head-actions">
+            <button id="simulateBtn" class="btn btn-outline">
+              <svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              Simulate Movement
+            </button>
+            <button id="sosModeBtn" class="btn btn-danger">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
+              SOS Mode
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid">
+
+        <!-- ================= MAIN COLUMN ================= -->
+        <section class="col-main">
+
+          <!-- Route Card -->
+          <div class="card route-card">
+            <div class="card-top">
+              <div>
+                <span class="label">Current Route</span>
+                <h2>Route B — AI Recommended</h2>
+              </div>
+              <div class="badges">
+                <span class="badge badge-safe" id="routeStatusBadge"><i class="dot-green"></i> SAFE</span>
+                <span class="badge badge-score" id="scoreBadge">Score: 94/100</span>
+              </div>
+            </div>
+
+            <div class="route-points">
+              <div class="point">
+                <div class="point-icon origin">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div class="point-info">
+                  <span class="point-label">Origin</span>
+                  <span class="point-value">Office</span>
+                </div>
+              </div>
+              <div class="route-line"><span></span></div>
+              <div class="point">
+                <div class="point-icon destination">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+                </div>
+                <div class="point-info">
+                  <span class="point-label">Destination</span>
+                  <span class="point-value">Home</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="eta-row">
+              <div class="eta-left">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Estimated Arrival: <strong id="etaTime">41 mins</strong>
+              </div>
+              <span id="progressPercent">0% Complete</span>
+            </div>
+
+            <div class="progress-track">
+              <div class="progress-fill" id="progressFill"></div>
+            </div>
+
+            <div class="manual-row">
+              <span>Manual Progress</span>
+              <input type="range" id="manualSlider" min="0" max="100" value="0">
+              <button id="finishBtn" class="link-btn">Finish Now</button>
+            </div>
+
+            <div class="ai-actions">
+              <h3>AI Safety Sentinel Actions</h3>
+              <div class="actions-grid">
+                <button class="action-btn" data-action="audio">
+                  <span class="action-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+                  </span>
+                  <span class="action-title">Audio Anomaly Scan</span>
+                  <span class="action-sub">Voice safety prompt</span>
+                </button>
+
+                <button class="action-btn" data-action="env">
+                  <span class="action-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2Z"/><circle cx="12" cy="13" r="4"/></svg>
+                  </span>
+                  <span class="action-title">Environment Scan</span>
+                  <span class="action-sub">Scan lighting & crowds</span>
+                </button>
+
+                <button class="action-btn" data-action="reroute">
+                  <span class="action-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"/></svg>
+                  </span>
+                  <span class="action-title">Simulate Reroute</span>
+                  <span class="action-sub">Test safety dynamic route</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Environmental Signals -->
+          <div class="card env-card">
+            <div class="card-top">
+              <h3>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                Real-Time Environmental Signals
+              </h3>
+              <span class="live-chip">● Live Stream</span>
+            </div>
+
+            <div class="env-metrics">
+              <div class="metric">
+                <div class="metric-head">
+                  <span>Street Lighting</span>
+                  <span class="metric-value good">95% Well-Lit</span>
+                </div>
+                <div class="meter"><div class="meter-fill good" style="width:95%"></div></div>
+                <p class="metric-note">High visibility commercial LED lighting active.</p>
+              </div>
+
+              <div class="metric">
+                <div class="metric-head">
+                  <span>Pedestrian Density</span>
+                  <span class="metric-value warn" id="pedValue">Moderate Activity</span>
+                </div>
+                <div class="meter"><div class="meter-fill warn" id="pedMeter" style="width:55%"></div></div>
+                <p class="metric-note">Normal foot traffic verified by nearby signals.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================= SIDE COLUMN ================= -->
+        <aside class="col-side">
+
+          <div class="card siren-card">
+            <div class="circle-icon muted">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+            </div>
+            <h3>Manual Siren</h3>
+            <p>Emit a high-decibel audible alarm to deter threats immediately.</p>
+            <button id="sirenBtn" class="btn btn-block btn-outline">Trigger Audible Alarm</button>
+          </div>
+
+          <div class="card sos-card">
+            <div class="circle-icon danger">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
+            </div>
+            <h3>Emergency SOS</h3>
+            <p>Instantly alert emergency contacts & dispatch live location.</p>
+            <button id="sosBtn" class="btn btn-block btn-danger-solid">Activate SOS Now</button>
+          </div>
+
+          <div class="card contacts-card">
+            <div class="card-top">
+              <h3>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                Safety Circle Contacts
+              </h3>
+              <button id="manageBtn" class="link-btn">Manage</button>
+            </div>
+            <ul class="contacts-list" id="contactsList"></ul>
+          </div>
+        </aside>
+      </div>
+
+      <footer class="page-footer">
+        🔒 Built for <strong>Women's Safety</strong> — AI Guardian provides real-time protection, live location sharing, and instant emergency response, anytime, anywhere.
+      </footer>
+    </main>
+  </div>
+</div>
+
+<!-- Floating Emergency Button -->
+<button id="fabSos" class="fab-sos" title="Emergency SOS" aria-label="Emergency SOS">
+  <span class="fab-ring"></span>
+  <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
+</button>
+
+<!-- Toasts -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- SOS Confirmation Modal -->
+<div class="modal-overlay" id="sosModal">
+  <div class="modal">
+    <div class="modal-icon danger">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
+    </div>
+    <h2>Confirm Emergency SOS</h2>
+    <p>This will immediately notify your Safety Circle and share your live location. Continue?</p>
+    <div class="modal-actions">
+      <button class="btn btn-outline" id="cancelSos">Cancel</button>
+      <button class="btn btn-danger-solid" id="confirmSos">Yes, Activate SOS</button>
+    </div>
+  </div>
+</div>
+
+<!-- Manage Contacts Modal -->
+<div class="modal-overlay" id="manageModal">
+  <div class="modal">
+    <h2>Manage Safety Circle</h2>
+    <ul class="manage-list" id="manageList"></ul>
+    <form id="addContactForm" class="add-contact-form">
+      <input type="text" id="contactName" placeholder="Name" required>
+      <input type="text" id="contactRelation" placeholder="Relation (e.g. Mom)" required>
+      <button type="submit" class="btn btn-danger-solid">Add</button>
+    </form>
+    <button class="btn btn-outline btn-block" id="closeManage">Close</button>
+  </div>
+</div>
+
+<script src="livejourney.js"></script>
+</body>
+</html>
