@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Guardian — Interactive Safety Map</title>
+<meta name="description" content="AI Guardian is a women's safety platform. Map your everyday places and see real-time lighting, activity and risk signals around them.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/css/SafePlace.css">
+</head>
+<body>
+
+<!-- ============ APP SHELL ============ -->
+<div class="app">
+
+  <!-- Mobile top bar -->
+  <header class="mobile-bar">
+    <button class="icon-btn" id="menuToggle" aria-label="Open menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M3 6h18M3 12h18M3 18h18" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+    </button>
+    <div class="brand brand--mobile">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><path d="M12 2 4 5v6c0 5 3.4 8.7 8 11 4.6-2.3 8-6 8-11V5l-8-3Z" fill="currentColor"/><path d="M9 12.2 11.2 14.4 15.5 9.8" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      AI Guardian
+    </div>
+    <button class="sos-btn sos-btn--mini" id="sosBtnMobile" aria-label="Send SOS alert">SOS</button>
+  </header>
+
+  <!-- Sidebar -->
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><path d="M12 2 4 5v6c0 5 3.4 8.7 8 11 4.6-2.3 8-6 8-11V5l-8-3Z" fill="currentColor"/><path d="M9 12.2 11.2 14.4 15.5 9.8" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </span>
+      <span>AI Guardian</span>
+    </div>
+    <p class="brand-tag">A women's safety &amp; navigation companion</p>
+
+    <nav class="nav" aria-label="Primary">
+      <a class="nav-link" href="#" data-nav="dashboard"><i data-icon="grid"></i>Dashboard</a>
+      <a class="nav-link" href="#" data-nav="route"><i data-icon="route"></i>Safe Route</a>
+      <a class="nav-link nav-link--active" href="#" data-nav="map"><i data-icon="map"></i>Safety Map</a>
+      <a class="nav-link" href="#" data-nav="journey"><i data-icon="radio"></i>Live Journey</a>
+      <a class="nav-link" href="#" data-nav="circle"><i data-icon="users"></i>Safety Circle</a>
+      <a class="nav-link" href="#" data-nav="network"><i data-icon="shield"></i>Guardian Network</a>
+      <a class="nav-link" href="#" data-nav="notifications"><i data-icon="bell"></i>Notifications <span class="nav-badge" id="notifCount">0</span></a>
+      <a class="nav-link" href="#" data-nav="history"><i data-icon="clock"></i>Journey History</a>
+      <a class="nav-link" href="#" data-nav="settings"><i data-icon="settings"></i>Settings</a>
+    </nav>
+
+    <button class="sos-btn" id="sosBtn">
+      <i data-icon="alert"></i> Emergency SOS
+    </button>
+
+    <div class="user-card">
+      <div class="user-avatar" id="userAvatar">?</div>
+      <div class="user-meta">
+        <strong id="userName">Set up your profile</strong>
+        <span id="userEmail">Add locations to begin</span>
+      </div>
+    </div>
+  </aside>
+
+  <div class="sidebar-scrim" id="sidebarScrim"></div>
+
+  <!-- Main -->
+  <main class="main">
+    <header class="topbar">
+      <div class="topbar-title">
+        <h1>Interactive Safety Heatmap</h1>
+        <p>Add the places you actually go to and see live lighting, activity and risk signals around them.</p>
+      </div>
+      <div class="topbar-tools">
+        <label class="search" for="searchInput">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="m20 20-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <input id="searchInput" type="text" placeholder="Search a saved place…" autocomplete="off">
+        </label>
+        <button class="icon-btn" id="notifBtn" aria-label="Notifications">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M13.7 21a2 2 0 0 1-3.4 0" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <span class="dot" id="notifDot" hidden></span>
+        </button>
+        <button class="icon-btn" id="profileBtn" aria-label="Profile">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" stroke="currentColor" stroke-width="2"/><path d="M4 21c1.5-4.5 5-6 8-6s6.5 1.5 8 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </button>
+        <button class="sos-btn sos-btn--desktop" id="sosBtnDesktop">SOS</button>
+      </div>
+    </header>
+
+    <p class="safety-banner">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2 4 5v6c0 5 3.4 8.7 8 11 4.6-2.3 8-6 8-11V5l-8-3Z" fill="currentColor"/></svg>
+      Built for women's personal safety — your saved places, routes and alerts stay private to you and the guardians you choose.
+    </p>
+
+    <!-- Stat cards -->
+    <section class="stats" id="statsGrid" aria-label="Safety overview"></section>
+
+    <!-- Map card -->
+    <section class="map-card">
+      <div class="map-card-head">
+        <div>
+          <h2>Live Safety Map</h2>
+          <p id="mapSubline">No places added yet</p>
+        </div>
+        <div class="map-card-actions">
+          <button class="btn btn-ghost" id="legendToggle">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 8v.01M12 11v5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            Legend
+          </button>
+          <button class="btn btn-primary" id="addPlaceBtn">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+            Add a place
+          </button>
+        </div>
+      </div>
+
+      <!-- Layer toggles -->
+      <div class="layers" id="layerToggles"></div>
+
+      <!-- Map viewport -->
+      <div class="map-viewport" id="mapViewport">
+        <div class="map-canvas" id="mapCanvas">
+          <svg class="map-grid" id="mapGrid" preserveAspectRatio="none"></svg>
+          <!-- markers + auras injected by script.js -->
+        </div>
+
+        <!-- Empty state / onboarding -->
+        <div class="map-empty" id="mapEmpty">
+          <div class="map-empty-inner">
+            <div class="map-empty-icon">
+              <svg width="30" height="30" viewBox="0 0 24 24" fill="none"><path d="M12 2 4 5v6c0 5 3.4 8.7 8 11 4.6-2.3 8-6 8-11V5l-8-3Z" stroke="currentColor" stroke-width="1.6"/><path d="M12 8v5M12 16v.01" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            </div>
+            <h3>Step 1 — Add your first place</h3>
+            <p>Tap anywhere on the map to drop a pin for home, work, college or anywhere you go often. We'll build your safety layers around it.</p>
+            <button class="btn btn-primary" id="emptyAddBtn">Tap the map to start</button>
+          </div>
+        </div>
+
+        <!-- Legend -->
+        <div class="legend" id="legendPanel" hidden>
+          <div class="legend-head">
+            <span>Map legend</span>
+            <button class="icon-btn icon-btn--sm" id="legendClose" aria-label="Close legend">✕</button>
+          </div>
+          <ul id="legendList"></ul>
+        </div>
+
+        <div class="map-hint" id="mapHint" hidden>Tap anywhere on the map to place a pin</div>
+      </div>
+    </section>
+
+    <section class="places-card">
+      <div class="places-head">
+        <h2>Your saved places</h2>
+        <span id="placesCount">0 places</span>
+      </div>
+      <div class="places-list" id="placesList"></div>
+    </section>
+
+    <footer class="page-footer">AI Guardian — demo interface. Safety data shown is illustrative; connect a real backend to populate live signals.</footer>
+  </main>
+</div>
+
+<!-- ============ MODALS ============ -->
+
+<div class="overlay" id="overlay" hidden></div>
+
+<!-- Add / edit place modal -->
+<div class="modal" id="placeModal" hidden role="dialog" aria-modal="true" aria-labelledby="placeModalTitle">
+  <div class="modal-head">
+    <h3 id="placeModalTitle">Add a place</h3>
+    <button class="icon-btn icon-btn--sm" id="placeModalClose" aria-label="Close">✕</button>
+  </div>
+  <form id="placeForm" class="modal-body">
+    <input type="hidden" id="placeId">
+    <input type="hidden" id="placeX">
+    <input type="hidden" id="placeY">
+
+    <label class="field">
+      <span>Label</span>
+      <input type="text" id="placeName" placeholder="e.g. Home, Office, College" required maxlength="30">
+    </label>
+
+    <label class="field">
+      <span>Category</span>
+      <select id="placeCategory">
+        <option value="home">Home</option>
+        <option value="work">Work / Office</option>
+        <option value="college">College / School</option>
+        <option value="gym">Gym</option>
+        <option value="hospital">Hospital</option>
+        <option value="police">Police station</option>
+        <option value="cafe">Café / Restaurant</option>
+        <option value="transit">Metro / Bus stop</option>
+        <option value="other">Other</option>
+      </select>
+    </label>
+
+    <label class="field">
+      <span>Notes <em>(optional)</em></span>
+      <textarea id="placeNotes" rows="2" placeholder="Anything you want to remember about this place"></textarea>
+    </label>
+
+    <p class="field-hint">Position is set from where you tapped the map — drag the pin afterwards to fine-tune it.</p>
+
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" id="placeDeleteBtn" hidden>Remove place</button>
+      <div class="modal-actions-right">
+        <button type="button" class="btn btn-ghost" id="placeCancelBtn">Cancel</button>
+        <button type="submit" class="btn btn-primary">Save place</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- Marker detail popover template lives in JS -->
+<div class="popover" id="markerPopover" hidden></div>
+
+<!-- SOS modal -->
+<div class="modal modal--sos" id="sosModal" hidden role="dialog" aria-modal="true" aria-labelledby="sosTitle">
+  <div class="modal-body modal-body--sos">
+    <div class="sos-ring">
+      <svg width="34" height="34" viewBox="0 0 24 24" fill="none"><path d="M12 2 4 5v6c0 5 3.4 8.7 8 11 4.6-2.3 8-6 8-11V5l-8-3Z" fill="currentColor"/></svg>
+    </div>
+    <h3 id="sosTitle">Send an emergency alert?</h3>
+    <p>This will notify your saved guardians with your current location. Only confirm if you need help.</p>
+    <div class="modal-actions modal-actions--center">
+      <button class="btn btn-ghost" id="sosCancelBtn">Cancel</button>
+      <button class="btn btn-danger" id="sosConfirmBtn">Confirm SOS</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" hidden></div>
+
+<script src="/js/SafePlace.js"></script>
+</body>
+</html>
