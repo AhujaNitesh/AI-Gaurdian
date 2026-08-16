@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Guardian — Guardian Network</title>
+  <meta name="description" content="Verified community guardians, 24/7 safe havens, and emergency escorts ready to provide rapid assistance.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/app-shell.css">
+  <link rel="stylesheet" href="../css/guardian-network.css">
+</head>
+<body>
+
+  <div class="ag-main">
+    <main class="ag-content">
+
+      <!-- Page Header -->
+      <div class="page-header">
+        <h1>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e11d48" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/><line x1="12" y1="7" x2="5" y2="17"/><line x1="12" y1="7" x2="19" y2="17"/><line x1="5" y1="19" x2="19" y2="19"/></svg>
+          Guardian Network
+        </h1>
+        <p>A trusted community of verified volunteers, 24/7 safe-haven businesses, and emergency safety escorts ready to assist you anytime.</p>
+      </div>
+
+      <!-- Stats Summary -->
+      <div class="gn-stats-strip">
+        <div class="gn-stat-pill">
+          <div class="gn-stat-icon">👥</div>
+          <div class="gn-stat-info">
+            <strong>14 Active</strong>
+            <span>Verified Guardians Nearby</span>
+          </div>
+        </div>
+        <div class="gn-stat-pill">
+          <div class="gn-stat-icon green">🛡️</div>
+          <div class="gn-stat-info">
+            <strong>8 Safe Havens</strong>
+            <span>24/7 Commercial Safe Zones</span>
+          </div>
+        </div>
+        <div class="gn-stat-pill">
+          <div class="gn-stat-icon blue">⚡</div>
+          <div class="gn-stat-info">
+            <strong>&lt; 3.5 Mins</strong>
+            <span>Average Escort Response</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filters & Search -->
+      <div class="gn-controls">
+        <div class="gn-tabs">
+          <button class="gn-tab active" data-category="all">All Network</button>
+          <button class="gn-tab" data-category="guardian">Guardians</button>
+          <button class="gn-tab" data-category="haven">Safe Havens</button>
+          <button class="gn-tab" data-category="police">Police &amp; Patrols</button>
+          <button class="gn-tab" data-category="escort">Escort Services</button>
+        </div>
+
+        <div class="gn-search-box">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="gnSearchInput" placeholder="Search guardians by name or area...">
+        </div>
+      </div>
+
+      <!-- Guardians Grid -->
+      <div class="gn-grid" id="gnGrid">
+        <!-- Injected via guardian-network.js -->
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Request Help Modal -->
+  <div class="gn-modal-overlay" id="gnModalOverlay">
+    <div class="gn-modal">
+      <h3 id="gnModalTitle">Request Community Escort</h3>
+      <p>Connect with a verified guardian to accompany you along your route or provide immediate safe haven.</p>
+
+      <form id="gnRequestForm">
+        <div class="gn-form-group">
+          <label>Selected Guardian / Safe Haven</label>
+          <input type="text" id="gnTargetName" readonly style="background:#f8fafc; font-weight:600;">
+        </div>
+
+        <div class="gn-form-group">
+          <label>Your Current Location</label>
+          <input type="text" id="gnPickupLoc" value="Current GPS (Office - Tech Hub)" required>
+        </div>
+
+        <div class="gn-form-group">
+          <label>Target Destination</label>
+          <input type="text" id="gnDestLoc" placeholder="e.g. Home, Metro Station" value="Home (Oak Ridge)" required>
+        </div>
+
+        <div class="gn-form-group">
+          <label>Urgency Level</label>
+          <select id="gnUrgency">
+            <option value="normal">Standard Walk Escort (Routine)</option>
+            <option value="urgent">Urgent — Feel Uncomfortable</option>
+            <option value="emergency">High Priority Emergency</option>
+          </select>
+        </div>
+
+        <div class="gn-modal-actions">
+          <button type="button" class="btn-ghost" id="gnModalCancel" style="flex:1;">Cancel</button>
+          <button type="submit" class="btn-primary" style="flex:1.5;">Dispatch Request</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/app-shell.js"></script>
+  <script src="../js/guardian-network.js"></script>
+</body>
+</html>

@@ -4,26 +4,6 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  // ---------- Mobile sidebar ----------
-  const sidebar = document.getElementById('sidebar');
-  const backdrop = document.getElementById('sidebarBackdrop');
-  const menuToggle = document.getElementById('menuToggle');
-
-  function openSidebar() {
-    sidebar.classList.add('is-open');
-    backdrop.classList.add('is-visible');
-    menuToggle.setAttribute('aria-expanded', 'true');
-  }
-  function closeSidebar() {
-    sidebar.classList.remove('is-open');
-    backdrop.classList.remove('is-visible');
-    menuToggle.setAttribute('aria-expanded', 'false');
-  }
-  menuToggle.addEventListener('click', () => {
-    sidebar.classList.contains('is-open') ? closeSidebar() : openSidebar();
-  });
-  backdrop.addEventListener('click', closeSidebar);
-
   // ---------- Step 1: origin / destination ----------
   const originInput = document.getElementById('origin');
   const destinationInput = document.getElementById('destination');
@@ -268,12 +248,12 @@ document.addEventListener('DOMContentLoaded', () => {
     step2Block.scrollIntoView({ behavior: 'smooth', block: 'start' });
   });
 
-  // ---------- Start journey (prototype placeholder) ----------
+  // ---------- Start journey: navigate to Live Journey ----------
   document.getElementById('startJourneyBtn').addEventListener('click', () => {
-    const route = ROUTES.find((r) => r.id === selectedRouteId);
-    if (!route) return;
-    // In a full build, this would hand off to the Live Journey view with SOS + Safety Circle monitoring active.
-    alert(`Safe Journey started on ${route.title.split(' — ')[0]}. Live monitoring and your Safety Circle would activate here.`);
+    if (!selectedRouteId) return;
+    window.location.href = 'livejourney.html?route=' + selectedRouteId
+      + '&dest=' + encodeURIComponent(destinationInput.value.trim())
+      + '&origin=' + encodeURIComponent(originInput.value.trim());
   });
 
   refreshCalculateState();

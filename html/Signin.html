@@ -6,7 +6,7 @@
 <title>AI Guardian | Sign In - Women's Safety Platform</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="/css/Signinstyle.css" />
+<link rel="stylesheet" href="../css/Signinstyle.css" />
 </head>
 <body>
 
@@ -64,7 +64,7 @@
                 <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="currentColor" stroke-width="2"/>
                 <path d="M22 6L12 13L2 6" stroke="currentColor" stroke-width="2"/>
               </svg>
-              <input type="email" id="email" name="email" placeholder="you@example.com" autocomplete="email" required />
+              <input type="email" id="email" name="email" placeholder="you@example.com" value="priya.sharma@example.com" autocomplete="email" required />
             </div>
             <span class="error-msg" id="emailError"></span>
           </div>
@@ -76,7 +76,7 @@
                 <rect x="5" y="11" width="14" height="10" rx="2" stroke="currentColor" stroke-width="2"/>
                 <path d="M8 11V7a4 4 0 118 0v4" stroke="currentColor" stroke-width="2"/>
               </svg>
-              <input type="password" id="password" name="password" placeholder="Enter your password" autocomplete="current-password" required />
+              <input type="password" id="password" name="password" placeholder="Enter your password" value="password123" autocomplete="current-password" required />
               <button type="button" class="toggle-password" id="togglePassword" aria-label="Toggle password visibility">
                 <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M1 12S5 4 12 4s11 8 11 8-4 8-11 8S1 12 1 12Z" stroke="currentColor" stroke-width="2"/>
@@ -93,11 +93,11 @@
               <span class="custom-checkbox"></span>
               Remember me
             </label>
-            <a href="/html/ForgotPassword.html" class="forgot-link">Forgot password?</a>
+            <a href="ForgotPassword.html" class="forgot-link">Forgot password?</a>
           </div>
 
           <button type="submit" class="btn-primary" id="submitBtn">
-            <span class="btn-text">Sign In</span>
+            <span class="btn-text">Sign In to Dashboard</span>
             <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
@@ -106,7 +106,7 @@
           <div class="divider"><span>or</span></div>
 
           <p class="footer-text">
-            Don't have an account? <a href="/html/register.html" class="create-link">Create Account</a>
+            Don't have an account? <a href="register.html" class="create-link">Create Account</a>
           </p>
 
         </form>
@@ -134,6 +134,6 @@
 
   </main>
 
-<script src="/js/Signinscript.js"></script>
+<script src="../js/Signinscript.js"></script>
 </body>
 </html>

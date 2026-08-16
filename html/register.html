@@ -10,7 +10,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="/css/register.css">
+<link rel="stylesheet" href="../css/register.css">
 </head>
 <body>
 
@@ -98,15 +98,10 @@
               <svg class="eye-closed" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" hidden>
                 <path d="M3 3L21 21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
                 <path d="M10.6 5.6C11.06 5.53 11.53 5.5 12 5.5C18.5 5.5 22 12 22 12C21.6 12.7 20.8 13.9 19.6 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                <path d="M6.6 6.6C3.8 8.3 2 12 2 12C2 12 5.5 18.5 12 18.5C13.4 18.5 14.6 18.2 15.7 17.7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                <path d="M9.9 10C9.35 10.55 9 11.3 9 12.1C9 13.75 10.35 15 12 15C12.8 15 13.55 14.65 14.1 14.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.6"/>
               </svg>
             </button>
           </div>
-          <div class="strength-meter" aria-hidden="true">
-            <span data-bar></span><span data-bar></span><span data-bar></span><span data-bar></span>
-          </div>
-          <p class="hint" id="strengthLabel">&nbsp;</p>
           <p class="error" id="passwordError" role="alert"></p>
         </div>
 
@@ -117,8 +112,8 @@
               <rect x="5" y="10.5" width="14" height="10" rx="2" stroke="currentColor" stroke-width="1.6"/>
               <path d="M8 10.5V7.5C8 5.29086 9.79086 3.5 12 3.5C14.2091 3.5 16 5.29086 16 7.5V10.5" stroke="currentColor" stroke-width="1.6"/>
             </svg>
-            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Repeat password" autocomplete="new-password" required>
-            <button type="button" class="toggle-visibility" data-target="confirmPassword" aria-label="Show password">
+            <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Repeat password" autocomplete="new-password" minlength="6" required>
+            <button type="button" class="toggle-visibility" data-target="confirmPassword" aria-label="Show confirm password">
               <svg class="eye-open" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
                 <path d="M2 12C2 12 5.5 5.5 12 5.5C18.5 5.5 22 12 22 12C22 12 18.5 18.5 12 18.5C5.5 18.5 2 12 2 12Z" stroke="currentColor" stroke-width="1.6"/>
                 <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.6"/>
@@ -126,8 +121,7 @@
               <svg class="eye-closed" width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" hidden>
                 <path d="M3 3L21 21" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
                 <path d="M10.6 5.6C11.06 5.53 11.53 5.5 12 5.5C18.5 5.5 22 12 22 12C21.6 12.7 20.8 13.9 19.6 15" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                <path d="M6.6 6.6C3.8 8.3 2 12 2 12C2 12 5.5 18.5 12 18.5C13.4 18.5 14.6 18.2 15.7 17.7" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
-                <path d="M9.9 10C9.35 10.55 9 11.3 9 12.1C9 13.75 10.35 15 12 15C12.8 15 13.55 14.65 14.1 14.1" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/>
+                <circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.6"/>
               </svg>
             </button>
           </div>
@@ -135,11 +129,18 @@
         </div>
       </div>
 
-      <label class="checkbox-row" for="terms">
+      <div class="strength" aria-live="polite">
+        <div class="strength-meter" data-level="0" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </div>
+        <span class="strength-label" id="strengthLabel">&nbsp;</span>
+      </div>
+
+      <label class="checkbox-label" for="terms">
         <input type="checkbox" id="terms" name="terms" required>
-        <span class="checkbox-box" aria-hidden="true">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M4 12L9.5 17.5L20 6.5" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <span class="custom-check" aria-hidden="true">
+          <svg width="12" height="10" viewBox="0 0 12 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.5 5L4.5 8L10.5 1.5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </span>
         <span class="checkbox-text">
@@ -156,7 +157,7 @@
         </svg>
       </button>
 
-      <p class="signin-row">Already have an account? <a href="/html/Signin.html">Sign In</a></p>
+      <p class="signin-row">Already have an account? <a href="Signin.html">Sign In</a></p>
     </form>
 
     <div class="success-panel" id="successPanel" hidden>
@@ -166,8 +167,10 @@
         </svg>
       </div>
       <h2>You're protected, <span id="successName">friend</span>.</h2>
-      <p>Your AI Guardian account is ready. Set up your Safety Circle next to start your first monitored journey.</p>
-      <button type="button" class="submit-btn submit-btn--ghost" id="resetBtn">Back to form</button>
+      <p>Your AI Guardian account is ready. Your Safety Circle and AI Guardian protection are now active.</p>
+      <div style="display: flex; gap: 12px; margin-top: 20px; justify-content: center;">
+        <a href="dashboard.html" class="submit-btn" style="text-decoration:none; display:inline-flex; align-items:center; justify-content:center;">Go to Dashboard</a>
+      </div>
     </div>
 
   </main>
@@ -176,6 +179,6 @@
 
 </div>
 
-<script src="/js/register.js"></script>
+<script src="../js/register.js"></script>
 </body>
 </html>

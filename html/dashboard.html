@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Guardian — Dashboard</title>
+  <meta name="description" content="AI Guardian women's safety command center — monitor journeys, safety circle status, and AI routes.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/app-shell.css">
+  <link rel="stylesheet" href="../css/dashboard.css">
+</head>
+<body>
+
+  <div class="ag-main">
+    <main class="ag-content">
+
+      <!-- Welcome Banner -->
+      <div class="dash-welcome">
+        <div class="dash-welcome-content">
+          <h1>Welcome back, <span id="dashUserName">Priya</span> 👋</h1>
+          <p>AI Guardian Sentinel is active. Your route telemetry, emergency broadcast channels, and Safety Circle are synced and ready.</p>
+        </div>
+        <div class="dash-welcome-actions">
+          <a href="saferoute.html" class="btn-primary" style="background:#e11d48; color:#fff; border-radius:10px; padding:10px 20px; font-weight:700;">
+            🗺️ Plan Safe Route
+          </a>
+        </div>
+      </div>
+
+      <!-- Stats Overview -->
+      <div class="dash-stats-grid">
+        <div class="dash-stat-card">
+          <div class="dash-stat-top">
+            <div class="dash-stat-icon icon-green">🛡️</div>
+            <span class="activity-badge badge-green">OPTIMAL</span>
+          </div>
+          <div class="dash-stat-value">94<small style="font-size:14px; font-weight:500; color:#64748b;">/100</small></div>
+          <div class="dash-stat-label">Average Safety Score</div>
+        </div>
+
+        <div class="dash-stat-card">
+          <div class="dash-stat-top">
+            <div class="dash-stat-icon icon-red">👥</div>
+            <span class="activity-badge badge-green">3 LIVE</span>
+          </div>
+          <div class="dash-stat-value" id="dashCircleCount">3</div>
+          <div class="dash-stat-label">Safety Circle Contacts</div>
+        </div>
+
+        <div class="dash-stat-card">
+          <div class="dash-stat-top">
+            <div class="dash-stat-icon icon-blue">📍</div>
+            <span class="activity-badge badge-blue">SAVED</span>
+          </div>
+          <div class="dash-stat-value" id="dashPlacesCount">2</div>
+          <div class="dash-stat-label">Saved Safe Places</div>
+        </div>
+
+        <div class="dash-stat-card">
+          <div class="dash-stat-top">
+            <div class="dash-stat-icon icon-purple">🤝</div>
+            <span class="activity-badge badge-green">24/7 NEARBY</span>
+          </div>
+          <div class="dash-stat-value">8</div>
+          <div class="dash-stat-label">Verified Safe Havens</div>
+        </div>
+      </div>
+
+      <!-- Quick Actions Grid -->
+      <h2 class="dash-section-title">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e11d48" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+        Quick Protection Actions
+      </h2>
+
+      <div class="dash-actions-grid">
+        <a href="saferoute.html" class="dash-action-card">
+          <div class="dash-action-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>
+          </div>
+          <div class="dash-action-title">Plan Safe Route</div>
+          <div class="dash-action-desc">AI scans lighting, foot traffic, and reports to chart the safest route.</div>
+        </a>
+
+        <a href="livejouney.html" class="dash-action-card">
+          <div class="dash-action-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="2"/><path d="M16.24 7.76a6 6 0 0 1 0 8.49M7.76 16.25a6 6 0 0 1 0-8.49M20.49 3.51a14 14 0 0 1 0 19.79M3.51 20.49a14 14 0 0 1 0-19.79"/></svg>
+          </div>
+          <div class="dash-action-title">Live Journey Monitor</div>
+          <div class="dash-action-desc">Real-time GPS escort with deviation alerts and automated check-ins.</div>
+        </a>
+
+        <a href="SafePlaces.html" class="dash-action-card">
+          <div class="dash-action-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg>
+          </div>
+          <div class="dash-action-title">Safety Heatmap</div>
+          <div class="dash-action-desc">Explore city safety density, active havens, and drop custom safety pins.</div>
+        </a>
+
+        <a href="safety-circle.html" class="dash-action-card">
+          <div class="dash-action-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <div class="dash-action-title">Safety Circle</div>
+          <div class="dash-action-desc">Manage trusted guardians who receive automatic live trip broadcasts.</div>
+        </a>
+      </div>
+
+      <!-- Two Column Section -->
+      <div class="dash-two-col">
+
+        <!-- Left: Recent Activity -->
+        <div class="dash-card">
+          <div class="dash-card-header">
+            <h3>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              Recent Protection Activity
+            </h3>
+            <a href="journey-history.html" style="font-size:12.5px; font-weight:600; color:#e11d48; text-decoration:none;">View All History &rarr;</a>
+          </div>
+
+          <ul class="activity-list">
+            <li class="activity-item">
+              <div class="activity-icon icon-green">🛡️</div>
+              <div class="activity-info">
+                <div class="activity-title">Journey Completed — Route B (Home)</div>
+                <div class="activity-meta">Today, 8:42 PM &bull; Safety Score 94/100 &bull; Arrived safely</div>
+              </div>
+              <span class="activity-badge badge-green">SAFE</span>
+            </li>
+
+            <li class="activity-item">
+              <div class="activity-icon icon-blue">👥</div>
+              <div class="activity-info">
+                <div class="activity-title">Safety Circle Telemetry Synced</div>
+                <div class="activity-meta">Today, 8:15 PM &bull; 3 contacts active</div>
+              </div>
+              <span class="activity-badge badge-blue">ACTIVE</span>
+            </li>
+
+            <li class="activity-item">
+              <div class="activity-icon icon-purple">📍</div>
+              <div class="activity-info">
+                <div class="activity-title">Safe Haven Identified — Apollo Pharmacy</div>
+                <div class="activity-meta">Yesterday, 6:30 PM &bull; Verified 24/7 safe zone</div>
+              </div>
+              <span class="activity-badge badge-green">VERIFIED</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Right: Daily Safety Tip & Emergency Helplines -->
+        <div class="dash-card">
+          <div class="safety-tip-box">
+            <div class="safety-tip-head">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              Daily Safety Intelligence
+            </div>
+            <div class="safety-tip-text" id="dailyTipText">
+              "When walking alone after dusk, keep your headphones in ambient transparency mode and share your live route with your Safety Circle."
+            </div>
+          </div>
+
+          <div class="dash-card-header" style="margin-bottom:12px;">
+            <h3>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e11d48" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              Emergency Helplines
+            </h3>
+          </div>
+
+          <div class="helpline-item">
+            <div>
+              <strong>Women's National Helpline</strong>
+              <span>1091 &bull; 24/7 Toll Free</span>
+            </div>
+            <a href="tel:1091" class="helpline-call-btn">Call</a>
+          </div>
+
+          <div class="helpline-item">
+            <div>
+              <strong>National Emergency Services</strong>
+              <span>112 &bull; Police / Medical</span>
+            </div>
+            <a href="tel:112" class="helpline-call-btn">Call</a>
+          </div>
+
+          <div class="helpline-item">
+            <div>
+              <strong>Police Emergency</strong>
+              <span>100 &bull; Direct Police Dispatch</span>
+            </div>
+            <a href="tel:100" class="helpline-call-btn">Call</a>
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+  </div>
+
+  <script src="../js/app-shell.js"></script>
+  <script src="../js/dashboard.js"></script>
+</body>
+</html>

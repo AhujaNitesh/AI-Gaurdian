@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
     return true;
   }
 
-  // Validate on blur for a calmer experience (no error-while-typing on first pass)
+  // Validate on blur
   fields.fullName.addEventListener('blur', validateFullName);
   fields.email.addEventListener('blur', validateEmail);
   fields.phone.addEventListener('blur', validatePhone);
@@ -162,7 +162,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!isValid) {
       form.classList.remove('shake');
-      // Force reflow so the animation can replay
       void form.offsetWidth;
       form.classList.add('shake');
 
@@ -171,28 +170,39 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // No backend wired up — this is where a real API call would go.
     submitBtn.disabled = true;
     submitBtn.querySelector('span').textContent = 'Creating account…';
 
     setTimeout(() => {
-      const name = fields.fullName.value.trim().split(' ')[0];
-      document.getElementById('successName').textContent = name || 'friend';
+      const name = fields.fullName.value.trim();
+      const email = fields.email.value.trim();
+      const phone = fields.phone.value.trim();
+
+      // Save user to localStorage
+      localStorage.setItem('ag_user', JSON.stringify({
+        name: name,
+        email: email,
+        phone: phone || '+91 98765 43210'
+      }));
+
+      document.getElementById('successName').textContent = name.split(' ')[0] || 'friend';
       form.hidden = true;
       successPanel.hidden = false;
     }, 600);
   });
 
   // ---------- Reset ----------
-  resetBtn.addEventListener('click', () => {
-    form.reset();
-    Object.keys(errors).forEach(clearError);
-    strengthMeter.setAttribute('data-level', 0);
-    strengthLabel.textContent = '\u00A0';
-    submitBtn.disabled = false;
-    submitBtn.querySelector('span').textContent = 'Register & Start Safe Journey';
-    successPanel.hidden = true;
-    form.hidden = false;
-    fields.fullName.focus();
-  });
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      form.reset();
+      Object.keys(errors).forEach(clearError);
+      strengthMeter.setAttribute('data-level', 0);
+      strengthLabel.textContent = '\u00A0';
+      submitBtn.disabled = false;
+      submitBtn.querySelector('span').textContent = 'Register & Start Safe Journey';
+      successPanel.hidden = true;
+      form.hidden = false;
+      fields.fullName.focus();
+    });
+  }
 });

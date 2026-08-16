@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Guardian — Journey History</title>
+  <meta name="description" content="Complete log of your trips with AI safety ratings, route metrics, and verified arrival check-ins.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/app-shell.css">
+  <link rel="stylesheet" href="../css/journey-history.css">
+</head>
+<body>
+
+  <div class="ag-main">
+    <main class="ag-content">
+
+      <!-- Page Header -->
+      <div class="page-header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px;">
+        <div>
+          <h1>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#e11d48" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Journey History
+          </h1>
+          <p>Your encrypted history of past journeys, safety evaluations, and guardian check-ins.</p>
+        </div>
+        <button class="btn-ghost" id="jhExportBtn" style="font-size:13px;">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Export Safety Log
+        </button>
+      </div>
+
+      <!-- Stats Grid -->
+      <div class="jh-stats-grid">
+        <div class="jh-stat-card">
+          <div class="jh-stat-num">24</div>
+          <div class="jh-stat-label">Total Monitored Journeys</div>
+        </div>
+        <div class="jh-stat-card">
+          <div class="jh-stat-num" style="color:#16a34a;">92%</div>
+          <div class="jh-stat-label">Avg AI Safety Rating</div>
+        </div>
+        <div class="jh-stat-card">
+          <div class="jh-stat-num">58.4 km</div>
+          <div class="jh-stat-label">Total Distance Traveled</div>
+        </div>
+        <div class="jh-stat-card">
+          <div class="jh-stat-num" style="color:#2563eb;">100%</div>
+          <div class="jh-stat-label">Verified Safe Arrivals</div>
+        </div>
+      </div>
+
+      <!-- Search and Filter -->
+      <div class="jh-controls">
+        <div class="jh-search-wrap">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          <input type="text" id="jhSearch" placeholder="Search by route, origin, or date...">
+        </div>
+
+        <div class="jh-filter-group">
+          <select id="jhFilterSelect" style="padding:8px 14px; border-radius:8px; border:1px solid #e8eaf0; background:#fff; font-size:13px; font-family:inherit; color:#0f172a; outline:none;">
+            <option value="all">All Journeys</option>
+            <option value="safe">Safety Score 90%+</option>
+            <option value="moderate">Safety Score &lt; 90%</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Journey List -->
+      <div class="jh-list" id="jhList">
+        <!-- Injected via journey-history.js -->
+      </div>
+
+    </main>
+  </div>
+
+  <script src="../js/app-shell.js"></script>
+  <script src="../js/journey-history.js"></script>
+</body>
+</html>

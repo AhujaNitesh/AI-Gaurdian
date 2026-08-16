@@ -1,9 +1,31 @@
 /* ==================================================
-   AI GUARDIAN — LIVE JOURNEY PAGE (Women's Safety)
-   Permanent Sidebar — Website Version
+   AI GUARDIAN — LIVE JOURNEY SCRIPT (Women's Safety)
+   Unified Shell Version
    ================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  /* ---------- URL PARAMETERS & ROUTE SETUP ---------- */
+  const params = new URLSearchParams(window.location.search);
+  const routeParam = params.get('route') || 'B';
+  const destParam = params.get('dest') || 'Home (Oak Ridge)';
+  const originParam = params.get('origin') || 'Office (Tech Hub)';
+
+  // Update DOM with URL values
+  const routeTitleEl = document.querySelector('.route-card h2');
+  if (routeTitleEl) {
+    routeTitleEl.textContent = `Route ${routeParam} — ${routeParam === 'B' ? 'AI Recommended' : routeParam === 'A' ? 'Fastest' : 'Commercial Hub'}`;
+  }
+  const scoreBadge = document.getElementById('scoreBadge');
+  if (scoreBadge) {
+    scoreBadge.textContent = routeParam === 'B' ? '94 / 100 Safety' : routeParam === 'A' ? '76 / 100 Safety' : '87 / 100 Safety';
+  }
+
+  const pointValues = document.querySelectorAll('.point-value');
+  if (pointValues.length >= 2) {
+    pointValues[0].textContent = originParam;
+    pointValues[1].textContent = destParam;
+  }
 
   /* ---------- ELEMENT REFERENCES ---------- */
   const progressFill    = document.getElementById('progressFill');
@@ -13,12 +35,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const finishBtn        = document.getElementById('finishBtn');
   const simulateBtn      = document.getElementById('simulateBtn');
   const routeStatusBadge = document.getElementById('routeStatusBadge');
-  const scoreBadge       = document.getElementById('scoreBadge');
 
   const sirenBtn         = document.getElementById('sirenBtn');
   const sosBtn           = document.getElementById('sosBtn');
   const sosModeBtn       = document.getElementById('sosModeBtn');
-  const sosNavBtn        = document.getElementById('sosNavBtn');
   const fabSos           = document.getElementById('fabSos');
 
   const sosModal         = document.getElementById('sosModal');
@@ -33,48 +53,41 @@ document.addEventListener('DOMContentLoaded', () => {
   const contactNameInp   = document.getElementById('contactName');
   const contactRelInp    = document.getElementById('contactRelation');
   const contactsList     = document.getElementById('contactsList');
-
-  const pedValue         = document.getElementById('pedValue');
-  const pedMeter         = document.getElementById('pedMeter');
+  const feedList         = document.getElementById('feedList');
 
   const toastContainer   = document.getElementById('toastContainer');
 
-  const navItems         = document.querySelectorAll('.nav-item:not(.sos-nav)');
-
   /* ---------- STATE ---------- */
   let progress = 0;
-  const totalMinutes = 41;
+  const totalMinutes = routeParam === 'A' ? 26 : routeParam === 'B' ? 29 : 34;
   let simInterval = null;
   let simulating = false;
   let arrived = false;
 
+  // Load contacts from Safety Circle or default
   let contacts = [
     { name: 'Mom', relation: 'Family', status: 'Notified & Live' },
     { name: 'Riya Patel', relation: 'Friend', status: 'Notified & Live' },
     { name: 'Dad', relation: 'Family', status: 'Notified' }
   ];
 
-  /* ================= SIDEBAR NAV (DEMO PAGE ONLY) ================= */
-  navItems.forEach(item => {
-    item.addEventListener('click', (e) => {
-      e.preventDefault();
-      if (item.classList.contains('active')) return;
-      const name = item.dataset.name;
-      showToast(`"${name}" is available in the full AI Guardian website.`, 'info');
-    });
-  });
-
   /* ================= TOAST SYSTEM ================= */
   function showToast(message, type = 'info') {
+    if (window.showGuardianToast) {
+      window.showGuardianToast(message, type);
+      return;
+    }
     const toast = document.createElement('div');
     toast.className = `toast toast-${type}`;
     toast.textContent = message;
-    toastContainer.appendChild(toast);
-    requestAnimationFrame(() => toast.classList.add('show'));
-    setTimeout(() => {
-      toast.classList.remove('show');
-      setTimeout(() => toast.remove(), 350);
-    }, 3600);
+    if (toastContainer) {
+      toastContainer.appendChild(toast);
+      requestAnimationFrame(() => toast.classList.add('show'));
+      setTimeout(() => {
+        toast.classList.remove('show');
+        setTimeout(() => toast.remove(), 350);
+      }, 3600);
+    }
   }
 
   /* ================= CONTACTS RENDERING ================= */
@@ -85,6 +98,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function renderContacts() {
+    if (!contactsList) return;
     contactsList.innerHTML = contacts.map(c => `
       <li>
         <span>${c.name} <small>(${c.relation})</small></span>
@@ -94,6 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function renderManageList() {
+    if (!manageList) return;
     manageList.innerHTML = contacts.map((c, i) => `
       <li>
         <span>${c.name} <small>(${c.relation})</small></span>
@@ -102,72 +117,47 @@ document.addEventListener('DOMContentLoaded', () => {
     `).join('');
 
     manageList.querySelectorAll('button').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const idx = parseInt(btn.dataset.index, 10);
-        contacts.splice(idx, 1);
+      btn.addEventListener('click', (e) => {
+        const idx = parseInt(e.target.dataset.index, 10);
+        const removed = contacts.splice(idx, 1)[0];
         renderManageList();
         renderContacts();
-        showToast('Contact removed from Safety Circle.', 'info');
+        showToast(`Removed ${removed.name} from Safety Circle`, 'info');
       });
     });
   }
 
   renderContacts();
 
-  /* ================= MANAGE MODAL ================= */
-  manageBtn.addEventListener('click', () => {
-    renderManageList();
-    manageModal.classList.add('show');
-  });
-  closeManage.addEventListener('click', () => manageModal.classList.remove('show'));
-
-  addContactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const name = contactNameInp.value.trim();
-    const relation = contactRelInp.value.trim();
-    if (!name || !relation) return;
-
-    contacts.push({ name, relation, status: 'Pending' });
-    renderManageList();
-    renderContacts();
-    addContactForm.reset();
-    showToast(`${name} added to your Safety Circle.`, 'success');
-  });
-
-  /* ================= SOS MODAL ================= */
-  function openSosModal(e) {
-    if (e) e.preventDefault();
-    sosModal.classList.add('show');
-  }
-  function closeSosModal() { sosModal.classList.remove('show'); }
-
-  [sosBtn, sosModeBtn, sosNavBtn, fabSos].forEach(btn => {
-    btn.addEventListener('click', openSosModal);
-  });
-  cancelSos.addEventListener('click', closeSosModal);
-
-  confirmSos.addEventListener('click', () => {
-    closeSosModal();
-    activateSOS();
-  });
-
-  function activateSOS() {
-    contacts = contacts.map(c => ({ ...c, status: 'Notified & Live' }));
-    renderContacts();
-    showToast('🚨 Emergency SOS Activated! Live location shared with your Safety Circle.', 'danger');
-
-    document.body.classList.add('sos-alert');
-    setTimeout(() => document.body.classList.remove('sos-alert'), 4000);
+  /* ================= FEED HELPERS ================= */
+  function addFeedItem(text) {
+    if (!feedList) return;
+    const li = document.createElement('li');
+    li.className = 'feed-item';
+    li.innerHTML = `
+      <span class="feed-time">Just now</span>
+      <span class="feed-text">${text}</span>
+    `;
+    feedList.prepend(li);
   }
 
-  /* ================= JOURNEY PROGRESS ================= */
-  function updateProgressUI() {
-    progressFill.style.width = progress + '%';
-    progressPercent.textContent = Math.round(progress) + '% Complete';
-    manualSlider.value = progress;
+  /* ================= PROGRESS LOGIC ================= */
+  function updateUI() {
+    if (progressFill) progressFill.style.width = `${progress}%`;
+    if (progressPercent) progressPercent.textContent = `${Math.round(progress)}%`;
+    if (manualSlider) manualSlider.value = progress;
 
     const remaining = Math.max(0, Math.round(totalMinutes * (1 - progress / 100)));
-    etaTime.textContent = progress >= 100 ? 'Arrived' : remaining + ' mins';
+    if (etaTime) etaTime.textContent = `${remaining} min remaining`;
+
+    // Milestone feed updates
+    if (progress >= 25 && progress < 30) {
+      addFeedItem('Checkpoint 1 reached: Passed 24/7 Apollo Safe Haven.');
+    } else if (progress >= 50 && progress < 55) {
+      addFeedItem('Checkpoint 2: Police patrol unit visible (300m). Route optimal.');
+    } else if (progress >= 75 && progress < 80) {
+      addFeedItem('Checkpoint 3: Entering residential area. Continuous lighting confirmed.');
+    }
 
     if (progress >= 100 && !arrived) {
       handleArrival();
@@ -177,145 +167,149 @@ document.addEventListener('DOMContentLoaded', () => {
   function handleArrival() {
     arrived = true;
     stopSimulation();
-    routeStatusBadge.innerHTML = `<i class="dot-green"></i> ARRIVED`;
-    simulateBtn.disabled = true;
-    simulateBtn.style.opacity = 0.6;
-    showToast('🎉 You have arrived safely at your destination!', 'success');
+    if (routeStatusBadge) {
+      routeStatusBadge.textContent = 'ARRIVED SAFELY';
+      routeStatusBadge.className = 'badge badge-success';
+    }
+    addFeedItem('🎉 Arrived safely! Safety Circle notified of verified arrival.');
+    showToast('🎉 You arrived safely! Safety Circle notified.', 'success');
   }
 
+  /* ================= MANUAL SLIDER ================= */
+  if (manualSlider) {
+    manualSlider.addEventListener('input', (e) => {
+      if (simulating) stopSimulation();
+      progress = Number(e.target.value);
+      updateUI();
+    });
+  }
+
+  /* ================= AUTO SIMULATION ================= */
   function startSimulation() {
-    if (arrived) return;
     simulating = true;
-    simulateBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="5" width="4" height="14"/><rect x="14" y="5" width="4" height="14"/></svg> Pause Simulation`;
+    if (simulateBtn) simulateBtn.textContent = '⏸ Pause Walk';
+    showToast('AI Guardian real-time walk simulation started', 'info');
 
     simInterval = setInterval(() => {
-      progress = Math.min(100, progress + 2);
-      updateProgressUI();
-      if (progress >= 100) stopSimulation();
-    }, 500);
+      if (progress < 100) {
+        progress += 1.5;
+        if (progress > 100) progress = 100;
+        updateUI();
+      } else {
+        stopSimulation();
+      }
+    }, 400);
   }
 
   function stopSimulation() {
     simulating = false;
     clearInterval(simInterval);
-    if (!arrived) {
-      simulateBtn.innerHTML = `<svg viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg> Simulate Movement`;
-    }
+    simInterval = null;
+    if (simulateBtn) simulateBtn.textContent = '▶ Start Auto Walk';
   }
 
-  simulateBtn.addEventListener('click', () => {
-    if (simulating) stopSimulation();
-    else startSimulation();
-  });
-
-  manualSlider.addEventListener('input', (e) => {
-    stopSimulation();
-    progress = parseInt(e.target.value, 10);
-    if (progress < 100) arrived = false;
-    updateProgressUI();
-  });
-
-  finishBtn.addEventListener('click', () => {
-    stopSimulation();
-    progress = 100;
-    updateProgressUI();
-  });
-
-  /* ================= AI SAFETY ACTIONS ================= */
-  const pedLevels = [
-    { text: 'Low Activity', width: 25 },
-    { text: 'Moderate Activity', width: 55 },
-    { text: 'High Activity', width: 80 }
-  ];
-
-  document.querySelectorAll('.action-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      if (btn.classList.contains('loading')) return;
-      const titleEl = btn.querySelector('.action-title');
-      const originalText = titleEl.textContent;
-
-      btn.classList.add('loading');
-      titleEl.textContent = 'Scanning...';
-
-      setTimeout(() => {
-        btn.classList.remove('loading');
-        titleEl.textContent = originalText;
-        handleAction(btn.dataset.action);
-      }, 1200);
-    });
-  });
-
-  function handleAction(action) {
-    switch (action) {
-      case 'audio':
-        showToast('🎙️ Audio scan complete — no distress sounds detected.', 'success');
-        break;
-
-      case 'env': {
-        const random = pedLevels[Math.floor(Math.random() * pedLevels.length)];
-        pedValue.textContent = random.text;
-        pedMeter.style.width = random.width + '%';
-        showToast('📷 Environment scan complete — surroundings look safe.', 'success');
-        break;
+  if (simulateBtn) {
+    simulateBtn.addEventListener('click', () => {
+      if (simulating) {
+        stopSimulation();
+        showToast('Walk simulation paused', 'info');
+      } else {
+        if (progress >= 100) progress = 0;
+        startSimulation();
       }
-
-      case 'reroute':
-        scoreBadge.textContent = 'Score: 97/100';
-        showToast('🔄 Safer route found! Safety score improved to 97/100.', 'success');
-        break;
-    }
+    });
   }
 
-  /* ================= MANUAL SIREN (WEB AUDIO) ================= */
-  let audioCtx, oscillator, sirenInterval;
-  let sirenActive = false;
+  /* ================= ARRIVED SAFELY BUTTON ================= */
+  if (finishBtn) {
+    finishBtn.addEventListener('click', () => {
+      progress = 100;
+      updateUI();
+    });
+  }
 
-  function startSiren() {
+  /* ================= SIREN / ALARM ================= */
+  let audioCtx = null;
+  let sirenOsc = null;
+
+  function playSiren() {
     try {
       audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-      oscillator = audioCtx.createOscillator();
-      const gainNode = audioCtx.createGain();
-      gainNode.gain.value = 0.04;
-      oscillator.type = 'sawtooth';
-      oscillator.connect(gainNode).connect(audioCtx.destination);
-      oscillator.start();
+      sirenOsc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
 
-      let up = true;
-      sirenInterval = setInterval(() => {
-        if (!oscillator) return;
-        oscillator.frequency.linearRampToValueAtTime(up ? 880 : 440, audioCtx.currentTime + 0.35);
-        up = !up;
-      }, 380);
-    } catch (err) {
-      console.warn('Audio not supported in this browser.');
+      sirenOsc.type = 'sawtooth';
+      sirenOsc.frequency.setValueAtTime(800, audioCtx.currentTime);
+      sirenOsc.frequency.exponentialRampToValueAtTime(1400, audioCtx.currentTime + 0.3);
+      sirenOsc.frequency.exponentialRampToValueAtTime(800, audioCtx.currentTime + 0.6);
+
+      gain.gain.setValueAtTime(0.3, audioCtx.currentTime);
+      sirenOsc.connect(gain);
+      gain.connect(audioCtx.destination);
+
+      sirenOsc.start();
+      sirenOsc.stop(audioCtx.currentTime + 2.5);
+      showToast('🔊 Safety Siren activated!', 'danger');
+    } catch (e) {
+      showToast('🔊 Safety Siren sounding!', 'danger');
     }
   }
 
-  function stopSiren() {
-    clearInterval(sirenInterval);
-    if (oscillator) {
-      oscillator.stop();
-      oscillator.disconnect();
-      oscillator = null;
-    }
-    if (audioCtx) audioCtx.close();
+  if (sirenBtn) sirenBtn.addEventListener('click', playSiren);
+
+  /* ================= SOS FLOW ================= */
+  function openSosModal() {
+    if (sosModal) sosModal.classList.add('active');
+  }
+  function closeSosModal() {
+    if (sosModal) sosModal.classList.remove('active');
   }
 
-  sirenBtn.addEventListener('click', () => {
-    sirenActive = !sirenActive;
-    if (sirenActive) {
-      startSiren();
-      sirenBtn.textContent = 'Stop Alarm (Active)';
-      sirenBtn.classList.add('active-alarm');
-      showToast('🔊 Audible alarm activated!', 'danger');
-    } else {
-      stopSiren();
-      sirenBtn.textContent = 'Trigger Audible Alarm';
-      sirenBtn.classList.remove('active-alarm');
-      showToast('Alarm stopped.', 'info');
-    }
+  [sosBtn, sosModeBtn, fabSos].forEach(btn => {
+    if (btn) btn.addEventListener('click', openSosModal);
   });
 
-  /* ================= INIT ================= */
-  updateProgressUI();
+  if (cancelSos) cancelSos.addEventListener('click', closeSosModal);
+
+  if (confirmSos) {
+    confirmSos.addEventListener('click', () => {
+      closeSosModal();
+      document.body.classList.add('sos-active');
+      showToast('🚨 Emergency SOS broadcasted! Safety Circle and local services alerted.', 'danger');
+      addFeedItem('🚨 EMERGENCY SOS TRIGGERED. High-priority location dispatch sent.');
+      setTimeout(() => document.body.classList.remove('sos-active'), 5000);
+    });
+  }
+
+  /* ================= MANAGE CONTACTS MODAL ================= */
+  if (manageBtn) {
+    manageBtn.addEventListener('click', () => {
+      renderManageList();
+      if (manageModal) manageModal.classList.add('active');
+    });
+  }
+
+  if (closeManage) {
+    closeManage.addEventListener('click', () => {
+      if (manageModal) manageModal.classList.remove('active');
+    });
+  }
+
+  if (addContactForm) {
+    addContactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = contactNameInp.value.trim();
+      const relation = contactRelInp.value.trim();
+      if (!name || !relation) return;
+
+      contacts.push({ name, relation, status: 'Notified & Live' });
+      contactNameInp.value = '';
+      contactRelInp.value = '';
+      renderManageList();
+      renderContacts();
+      showToast(`Added ${name} to Safety Circle`, 'success');
+    });
+  }
+
+  updateUI();
 });

@@ -19,21 +19,13 @@ document.addEventListener('DOMContentLoaded', () => {
     <line x1="1" y1="1" x2="23" y2="23" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
   `;
 
-  // ===== Toggle Password Visibility (FIXED) =====
+  // ===== Toggle Password Visibility =====
   togglePasswordBtn.addEventListener('click', () => {
     const isCurrentlyPassword = passwordInput.type === 'password';
-
-    // Flip the input type
     passwordInput.type = isCurrentlyPassword ? 'text' : 'password';
-
-    // Toggle active styling
     togglePasswordBtn.classList.toggle('active', isCurrentlyPassword);
-
-    // Swap the icon so the user gets visual confirmation
     const iconSvg = togglePasswordBtn.querySelector('svg');
     iconSvg.innerHTML = isCurrentlyPassword ? eyeClosedIcon : eyeOpenIcon;
-
-    // Keep focus on the input after toggling for better UX
     passwordInput.focus();
   });
 
@@ -108,15 +100,22 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Simulate loading state
     setLoadingState(true);
 
     setTimeout(() => {
       setLoadingState(false);
-      // Replace this with your real authentication logic / API call
-      alert(`Welcome back! Signing in as: ${emailValue}`);
-      form.reset();
-    }, 1800);
+      // Save authenticated user profile
+      const rawName = emailValue.split('@')[0].replace(/[._]/g, ' ');
+      const formattedName = rawName.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ') || 'Priya Sharma';
+      localStorage.setItem('ag_user', JSON.stringify({
+        name: formattedName,
+        email: emailValue,
+        phone: '+91 98765 43210'
+      }));
+
+      // Redirect to unified Dashboard
+      window.location.href = 'dashboard.html';
+    }, 900);
   });
 
   function setLoadingState(isLoading) {
@@ -126,7 +125,7 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
       submitBtn.disabled = false;
       submitBtn.innerHTML = `
-        <span class="btn-text">Sign In</span>
+        <span class="btn-text">Sign In to Dashboard</span>
         <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>`;

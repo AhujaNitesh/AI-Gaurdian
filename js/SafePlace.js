@@ -146,7 +146,6 @@
   // ---- element refs ------------------------------------------
   const $ = (sel) => document.querySelector(sel);
   const el = {
-    sidebar: $("#sidebar"), sidebarScrim: $("#sidebarScrim"), menuToggle: $("#menuToggle"),
     statsGrid: $("#statsGrid"),
     layerToggles: $("#layerToggles"),
     mapCanvas: $("#mapCanvas"), mapViewport: $("#mapViewport"), mapGrid: $("#mapGrid"),
@@ -161,13 +160,10 @@
     placeDeleteBtn: $("#placeDeleteBtn"), placeCancelBtn: $("#placeCancelBtn"), placeModalClose: $("#placeModalClose"),
     addPlaceBtn: $("#addPlaceBtn"),
     markerPopover: $("#markerPopover"),
-    sosBtn: $("#sosBtn"), sosBtnDesktop: $("#sosBtnDesktop"), sosBtnMobile: $("#sosBtnMobile"),
     sosModal: $("#sosModal"), sosCancelBtn: $("#sosCancelBtn"), sosConfirmBtn: $("#sosConfirmBtn"),
-    notifBtn: $("#notifBtn"), notifDot: $("#notifDot"), notifCount: $("#notifCount"),
-    notifDrawer: $("#notifDrawer"), notifClose: $("#notifClose"), notifList: $("#notifList"),
+    // notifBtn/notifDot/notifCount are injected by app-shell; resolved lazily below
     searchInput: $("#searchInput"),
     toast: $("#toast"),
-    userAvatar: $("#userAvatar"), userName: $("#userName"), userEmail: $("#userEmail"),
   };
 
   // ---- helpers -------------------------------------------------
@@ -379,19 +375,8 @@
       : "No places added yet";
   }
 
-  /* ---------------- user card (derives from first saved place) --------- */
-  function renderUserCard() {
-    const home = places.find((p) => p.category === "home") || places[0];
-    if (home) {
-      el.userAvatar.textContent = home.name.slice(0, 1).toUpperCase();
-      el.userName.textContent = "Your safety map";
-      el.userEmail.textContent = `${places.length} place${places.length > 1 ? "s" : ""} tracked`;
-    } else {
-      el.userAvatar.textContent = "?";
-      el.userName.textContent = "Set up your profile";
-      el.userEmail.textContent = "Add locations to begin";
-    }
-  }
+  /* ---------------- user card ------------------------------------------ */
+  // User card lives in the app-shell sidebar — no local render needed.
 
   /* ---------------- notifications --------------------------------------- */
   async function pushNotif(message) {
@@ -402,16 +387,15 @@
   }
   function renderNotifBadge() {
     const unread = notifications.filter((n) => !n.read).length;
-    el.notifCount.textContent = unread;
-    el.notifDot.hidden = unread === 0;
+    // Badge elements are injected by app-shell.js — resolve lazily
+    const countEl = document.getElementById("ag-notif-count");
+    const dotEl   = document.getElementById("ag-notif-dot");
+    if (countEl) countEl.textContent = unread;
+    if (dotEl)   dotEl.hidden = unread === 0;
   }
   function renderNotifDrawer() {
-    el.notifList.innerHTML = notifications.length
-      ? notifications.map((n) => `<div class="notif-item">
-          <strong>${escapeHtml(n.message)}</strong>
-          <span>${new Date(n.time).toLocaleString()}</span>
-        </div>`).join("")
-      : `<p class="notif-empty">No notifications yet. Add a place or send an SOS to see activity here.</p>`;
+    // Notification list is managed by app-shell; push items via the shared store
+    // if a real backend is wired up. For now we keep the local badge only.
   }
 
   /* ---------------- master refresh -------------------------------------- */
@@ -422,32 +406,13 @@
     renderMarkers();
     renderPlacesList();
     renderEmptyState();
-    renderUserCard();
   }
 
   /* ===========================================================
      Interaction wiring
      =========================================================== */
 
-  // Sidebar (mobile)
-  el.menuToggle.addEventListener("click", () => {
-    el.sidebar.classList.add("open");
-    el.sidebarScrim.classList.add("show");
-  });
-  el.sidebarScrim.addEventListener("click", () => {
-    el.sidebar.classList.remove("open");
-    el.sidebarScrim.classList.remove("show");
-  });
-  document.querySelectorAll(".nav-link").forEach((link) => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-      el.sidebar.classList.remove("open");
-      el.sidebarScrim.classList.remove("show");
-      if (link.dataset.nav !== "map") {
-        showToast("This section is a placeholder in the demo shell — hook up your own view here.");
-      }
-    });
-  });
+  // Sidebar is managed by app-shell.js — no local wiring needed.
 
   // Layer toggles
   el.layerToggles.addEventListener("click", (e) => {
@@ -536,47 +501,54 @@
   });
 
   /* ---------------- SOS flow ------------------------------------------- */
-  function openSos() { openOverlayFor(el.sosModal); }
-  el.sosBtn.addEventListener("click", openSos);
-  el.sosBtnDesktop.addEventListener("click", openSos);
-  el.sosBtnMobile.addEventListener("click", openSos);
-  el.sosCancelBtn.addEventListener("click", closeModals);
-  el.sosConfirmBtn.addEventListener("click", async () => {
-    el.sosConfirmBtn.textContent = "Sending…";
-    el.sosConfirmBtn.disabled = true;
-    await API.sendSOS({ note: "Manual SOS from safety map" });
-    await pushNotif("SOS alert sent to your guardians with your current location.");
-    closeModals();
-    el.sosConfirmBtn.textContent = "Confirm SOS";
-    el.sosConfirmBtn.disabled = false;
-    showToast("SOS alert sent to your guardians");
-  });
+  function openSos() { if (el.sosModal) openOverlayFor(el.sosModal); }
+  document.addEventListener("DOMContentLoaded", () => {
+    const shellSosBtn = document.getElementById("ag-sos-btn");
+    if (shellSosBtn) shellSosBtn.addEventListener("click", openSos);
+  }, { once: true });
+  if (el.sosCancelBtn) el.sosCancelBtn.addEventListener("click", closeModals);
+  if (el.sosConfirmBtn) {
+    el.sosConfirmBtn.addEventListener("click", async () => {
+      el.sosConfirmBtn.textContent = "Sending…";
+      el.sosConfirmBtn.disabled = true;
+      await API.sendSOS({ note: "Manual SOS from safety map" });
+      await pushNotif("SOS alert sent to your guardians with your current location.");
+      closeModals();
+      el.sosConfirmBtn.textContent = "Confirm SOS";
+      el.sosConfirmBtn.disabled = false;
+      showToast("SOS alert sent to your guardians");
+    });
+  }
 
   /* ---------------- notifications drawer --------------------------------- */
-  el.notifBtn.addEventListener("click", async () => {
-    renderNotifDrawer();
-    el.notifDrawer.hidden = false;
-    await API.markNotificationsRead();
-    notifications = notifications.map((n) => ({ ...n, read: true }));
-    renderNotifBadge();
-  });
-  el.notifClose.addEventListener("click", () => { el.notifDrawer.hidden = true; });
+  document.addEventListener("DOMContentLoaded", () => {
+    const shellNotifBtn = document.getElementById("ag-notif-btn");
+    if (shellNotifBtn) {
+      shellNotifBtn.addEventListener("click", async () => {
+        await API.markNotificationsRead();
+        notifications = notifications.map((n) => ({ ...n, read: true }));
+        renderNotifBadge();
+      });
+    }
+  }, { once: true });
 
   /* ---------------- search -------------------------------------------------- */
-  el.searchInput.addEventListener("input", (e) => {
-    const q = e.target.value.trim().toLowerCase();
-    document.querySelectorAll(".marker").forEach((m) => (m.style.opacity = "1"));
-    document.querySelectorAll(".place-card").forEach((c) => (c.style.display = "flex"));
-    if (!q) return;
-    places.forEach((p) => {
-      const match = p.name.toLowerCase().includes(q);
-      const markerEl = [...el.mapCanvas.querySelectorAll(".marker")].find((m) =>
-        m.style.left === `${p.x}%` && m.style.top === `${p.y}%`);
-      if (markerEl) markerEl.style.opacity = match ? "1" : ".2";
-      const card = el.placesList.querySelector(`[data-id="${p.id}"]`);
-      if (card) card.style.display = match ? "flex" : "none";
+  if (el.searchInput) {
+    el.searchInput.addEventListener("input", (e) => {
+      const q = e.target.value.trim().toLowerCase();
+      document.querySelectorAll(".marker").forEach((m) => (m.style.opacity = "1"));
+      document.querySelectorAll(".place-card").forEach((c) => (c.style.display = "flex"));
+      if (!q) return;
+      places.forEach((p) => {
+        const match = p.name.toLowerCase().includes(q);
+        const markerEl = [...el.mapCanvas.querySelectorAll(".marker")].find((m) =>
+          m.style.left === `${p.x}%` && m.style.top === `${p.y}%`);
+        if (markerEl) markerEl.style.opacity = match ? "1" : ".2";
+        const card = el.placesList.querySelector(`[data-id="${p.id}"]`);
+        if (card) card.style.display = match ? "flex" : "none";
+      });
     });
-  });
+  }
 
   /* ---------------- boot ------------------------------------------------------ */
   async function init() {

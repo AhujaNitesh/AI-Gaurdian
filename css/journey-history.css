@@ -1,0 +1,223 @@
+/* ================================================================
+   AI GUARDIAN — JOURNEY HISTORY CSS
+   ================================================================ */
+
+.jh-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.jh-stat-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 18px 20px;
+  border: 1px solid #e8eaf0;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+}
+
+.jh-stat-num {
+  font-size: 24px;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 4px;
+}
+
+.jh-stat-label {
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 500;
+}
+
+/* Controls */
+.jh-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.jh-search-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  border: 1px solid #e8eaf0;
+  border-radius: 10px;
+  padding: 0 14px;
+  height: 40px;
+  min-width: 280px;
+}
+
+.jh-search-wrap input {
+  border: none;
+  background: transparent;
+  font-size: 13px;
+  font-family: inherit;
+  color: #0f172a;
+  outline: none;
+  width: 100%;
+}
+
+.jh-filter-group {
+  display: flex;
+  gap: 8px;
+}
+
+/* Journey List */
+.jh-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.jh-item {
+  background: #ffffff;
+  border-radius: 14px;
+  border: 1px solid #e8eaf0;
+  padding: 18px 22px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.jh-item:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.05);
+}
+
+.jh-item-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.jh-route-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.jh-route-icon {
+  width: 40px; height: 40px;
+  border-radius: 10px;
+  background: #ffe4ea;
+  color: #e11d48;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+  flex-shrink: 0;
+}
+
+.jh-route-names {
+  font-size: 15px;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 3px;
+}
+
+.jh-route-meta {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.jh-metrics-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.jh-score-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.score-high { background: #dcfce7; color: #15803d; }
+.score-mid  { background: #fef3c7; color: #b45309; }
+
+.jh-status-badge {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: #f1f5f9;
+  color: #334155;
+}
+
+.jh-toggle-btn {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  padding: 6px 12px;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #475569;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.15s;
+}
+
+.jh-toggle-btn:hover {
+  background: #f1f5f9;
+  color: #0f172a;
+}
+
+/* Expanded Detail */
+.jh-detail {
+  display: none;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #f1f5f9;
+  animation: slideDown 0.2s ease;
+}
+
+.jh-detail.open {
+  display: block;
+}
+
+.jh-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  background: #f8fafc;
+  padding: 14px 16px;
+  border-radius: 10px;
+}
+
+.jh-detail-col strong {
+  display: block;
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 4px;
+}
+
+.jh-detail-col span {
+  font-size: 13px;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 900px) {
+  .jh-stats-grid { grid-template-columns: repeat(2, 1fr); }
+  .jh-detail-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .jh-stats-grid { grid-template-columns: 1fr; }
+  .jh-item-main { flex-direction: column; align-items: flex-start; }
+}

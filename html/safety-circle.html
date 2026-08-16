@@ -14,135 +14,15 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <link rel="stylesheet" href="/css/safety-circle.css">
+    <!-- Stylesheets: app shell FIRST, then page-specific -->
+    <link rel="stylesheet" href="../css/app-shell.css">
+    <link rel="stylesheet" href="../css/safety-circle.css">
 </head>
 
 <body>
 
-<div class="app-container">
-
-    <!-- ================= SIDEBAR ================= -->
-    <aside class="sidebar">
-
-        <!-- Logo -->
-        <div class="brand">
-            <div class="brand-icon">
-                <i data-lucide="shield"></i>
-            </div>
-
-            <div class="brand-text">
-                <h2>AI <span>GUARDIAN</span></h2>
-                <p>Women's Safety Navigation<br>Network</p>
-            </div>
-        </div>
-
-
-        <!-- Navigation -->
-        <div class="navigation-title">NAVIGATION</div>
-
-        <nav class="sidebar-nav">
-
-            <a href="#" class="nav-item">
-                <i data-lucide="grid-2x2"></i>
-                <span>Dashboard</span>
-            </a>
-
-            <a href="#" class="nav-item">
-                <i data-lucide="navigation"></i>
-                <span>Safe Route</span>
-            </a>
-
-            <a href="#" class="nav-item">
-                <i data-lucide="map"></i>
-                <span>Safety Map</span>
-            </a>
-
-            <a href="#" class="nav-item">
-                <i data-lucide="radio"></i>
-                <span>Live Journey</span>
-            </a>
-
-            <!-- ACTIVE -->
-            <a href="#" class="nav-item active">
-                <i data-lucide="users"></i>
-                <span>Safety Circle</span>
-            </a>
-
-            <a href="#" class="nav-item">
-                <i data-lucide="network"></i>
-                <span>Guardian Network</span>
-            </a>
-
-            <a href="#" class="nav-item">
-                <i data-lucide="bell"></i>
-                <span>Notifications</span>
-            </a>
-
-            <a href="#" class="nav-item">
-                <i data-lucide="history"></i>
-                <span>Journey History</span>
-            </a>
-
-            <a href="#" class="nav-item">
-                <i data-lucide="settings"></i>
-                <span>Settings</span>
-            </a>
-
-            <a href="#" class="nav-item emergency">
-                <i data-lucide="shield-alert"></i>
-                <span>Emergency SOS</span>
-            </a>
-
-        </nav>
-
-
-        <!-- Account -->
-        <div class="account-box">
-
-            <div class="account-avatar">
-                PS
-            </div>
-
-            <div class="account-info">
-                <strong>Priya Sharma</strong>
-                <small>demo@guardian.ai</small>
-            </div>
-
-            <i data-lucide="log-out" class="logout-icon"></i>
-
-        </div>
-
-    </aside>
-
-
-    <!-- ================= MAIN CONTENT ================= -->
-    <main class="main-content">
-
-        <!-- Top Header -->
-        <header class="top-header">
-
-            <div></div>
-
-            <div class="header-actions">
-
-                <button class="sos-button">
-                    <i data-lucide="shield-alert"></i>
-                    SOS
-                </button>
-
-                <button class="header-icon">
-                    <i data-lucide="bell"></i>
-                    <span class="notification-dot"></span>
-                </button>
-
-                <button class="header-icon">
-                    <i data-lucide="user-round"></i>
-                </button>
-
-            </div>
-
-        </header>
-
+<div class="ag-main">
+    <main class="ag-content">
 
         <!-- Page Content -->
         <section class="page-content">
@@ -270,7 +150,7 @@
 
                     <div class="settings-row">
 
-                        <span>SOS & Warning Alerts</span>
+                        <span>SOS &amp; Warning Alerts</span>
 
                         <label class="switch">
                             <input type="checkbox" checked>
@@ -361,7 +241,7 @@
 
                     <div class="settings-row">
 
-                        <span>SOS & Warning Alerts</span>
+                        <span>SOS &amp; Warning Alerts</span>
 
                         <label class="switch">
                             <input type="checkbox" checked>
@@ -452,7 +332,7 @@
 
                     <div class="settings-row">
 
-                        <span>SOS & Warning Alerts</span>
+                        <span>SOS &amp; Warning Alerts</span>
 
                         <label class="switch">
                             <input type="checkbox" checked>
@@ -502,7 +382,6 @@
         </section>
 
     </main>
-
 </div>
 
 
@@ -605,7 +484,8 @@
 </div>
 
 
-<script src="/js/Safety Circle.js"></script>
+<script src="../js/app-shell.js"></script>
+<script src="../js/Safety Circle.js"></script>
 
 <script>
     lucide.createIcons();
